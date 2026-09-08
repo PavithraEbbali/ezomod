@@ -23,38 +23,53 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
+const DESCRIPTION =
+  "EZOMOD deploys autonomous omnichannel AI agents that orchestrate neural voice calls, WhatsApp, SMS, and email to qualify buyers, handle complex objections, escalate ghosted contacts, and book pipeline 24/7.";
+
+/**
+ * Absolute base for OG/Twitter asset URLs. Set NEXT_PUBLIC_SITE_URL once a custom
+ * domain is attached; otherwise preview builds resolve against their own Vercel URL.
+ */
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://ezomod.vercel.app");
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ezomod.ai"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "EZOMOD — Autonomous Real Estate Lead Generation & Voice Qualification",
+    default: "EZOMOD — Autonomous Omnichannel Lead Management & Client Operations AI",
     template: "%s · EZOMOD",
   },
-  description:
-    "EZOMOD is the autonomous AI agency for real estate. Every inbound lead is dialed in under 45 seconds, qualified on budget, location, timeline and pre-approval, then warm-transferred to your agent with the CRM already updated.",
+  description: DESCRIPTION,
   keywords: [
-    "real estate lead generation",
-    "AI voice qualification",
+    "autonomous revenue operations",
+    "omnichannel AI agent",
     "speed to lead",
-    "ISA automation",
-    "outbound call AI",
+    "neural voice qualification",
+    "WhatsApp Business API automation",
+    "lead escalation",
+    "Tier-1 client support automation",
+    "payment dunning automation",
     "Follow Up Boss automation",
   ],
   openGraph: {
-    title: "EZOMOD — Zero Missed Leads. Instant Sub-60s Voice Qualification.",
-    description:
-      "Autonomous voice agents that dial, qualify and warm-transfer every real estate lead in under 45 seconds.",
-    url: "https://ezomod.ai",
+    title: "EZOMOD — Every Lead. Every Channel. Contacted in Under 30 Seconds.",
+    description: DESCRIPTION,
+    url: SITE_URL,
     siteName: "EZOMOD",
     type: "website",
-    images: [{ url: "/ezomod logo.jpeg", width: 248, height: 224, alt: "EZOMOD" }],
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "EZOMOD" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EZOMOD — Autonomous Real Estate Voice Qualification",
-    description: "Zero missed leads. Sub-60s voice qualification. Warm transfers on autopilot.",
-    images: ["/ezomod logo.jpeg"],
+    title: "EZOMOD — Autonomous Omnichannel RevOps Engine",
+    description:
+      "Neural voice, WhatsApp, SMS and email orchestrated by one agent — from first inbound signal to post-close client desk.",
+    images: ["/logo.png"],
   },
-  icons: { icon: "/ezomod logo.jpeg", apple: "/ezomod logo.jpeg" },
+  icons: { icon: "/logo.png", apple: "/logo.png" },
   robots: { index: true, follow: true },
 };
 

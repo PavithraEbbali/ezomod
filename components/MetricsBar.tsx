@@ -1,7 +1,7 @@
 "use client";
 
 import { animate, motion, useInView } from "framer-motion";
-import { Clock3, Gauge, PhoneOff, TrendingUp } from "lucide-react";
+import { Gauge, PhoneOff, Radio, TrendingUp } from "lucide-react";
 import { useEffect, useRef, useState, type ComponentType } from "react";
 
 interface Metric {
@@ -17,30 +17,30 @@ interface Metric {
 const METRICS: Metric[] = [
   {
     prefix: "< ",
-    value: 45,
+    value: 30,
     suffix: "s",
     decimals: 0,
-    label: "Speed to Lead",
-    detail: "Median outbound dial from form submit to ring",
+    label: "First Touch",
+    detail: "Median seconds from inbound signal to live outbound contact",
     icon: Gauge,
+  },
+  {
+    prefix: "",
+    value: 4,
+    suffix: "",
+    decimals: 0,
+    label: "Orchestrated Channels",
+    detail: "Voice, WhatsApp, SMS and email running as one cadence",
+    icon: Radio,
   },
   {
     prefix: "",
     value: 100,
     suffix: "%",
     decimals: 0,
-    label: "Pipeline Coverage",
-    detail: "Every inquiry worked, nights and weekends included",
+    label: "Lifecycle Coverage",
+    detail: "Nights, weekends and post-close ops — nothing queued to Monday",
     icon: TrendingUp,
-  },
-  {
-    prefix: "",
-    value: 3.8,
-    suffix: "x",
-    decimals: 1,
-    label: "Booked Showings",
-    detail: "Lift in confirmed tours against manual follow-up",
-    icon: Clock3,
   },
   {
     prefix: "",
@@ -48,7 +48,7 @@ const METRICS: Metric[] = [
     suffix: "",
     decimals: 0,
     label: "Human Chasing Hours",
-    detail: "Agents stop dialing and start closing contracts",
+    detail: "Your team stops dialing and starts closing contracts",
     icon: PhoneOff,
   },
 ];
@@ -88,7 +88,7 @@ export default function MetricsBar() {
       <div className="container-x">
         <div
           ref={ref}
-          className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-3.5 sm:grid-cols-2 lg:grid-cols-4"
         >
           {METRICS.map((metric, index) => {
             const Icon = metric.icon;

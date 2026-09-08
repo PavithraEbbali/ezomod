@@ -1,3 +1,4 @@
+import AdaptiveDecisionMatrix from "@/components/AdaptiveDecisionMatrix";
 import BentoGrid from "@/components/BentoGrid";
 import ComparisonSection from "@/components/ComparisonSection";
 import CtaSection from "@/components/CtaSection";
@@ -17,6 +18,7 @@ export default function Page() {
         <MetricsBar />
         <PipelineAssembly />
         <BentoGrid />
+        <AdaptiveDecisionMatrix />
         <ComparisonSection />
         <IntegrationsMarquee />
         <CtaSection />

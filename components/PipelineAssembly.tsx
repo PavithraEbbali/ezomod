@@ -29,34 +29,34 @@ interface Step {
 const STEPS: Step[] = [
   {
     index: "01",
-    title: "Multi-Channel Ingestion",
+    title: "Omnichannel Ingestion",
     description:
-      "Every buyer and seller signal lands in one stream the instant it fires, deduplicated and enriched before the phone rings.",
-    chips: ["Meta Ads", "Google LSA", "Zillow", "Website IDX"],
+      "Every buyer, seller and client signal lands in one stream the instant it fires, deduplicated and enriched before anything dials.",
+    chips: ["Meta Ads", "Google LSA", "Zillow", "IDX", "Inbound SMS"],
     icon: Radar,
   },
   {
     index: "02",
-    title: "Instant Neural Voice Call",
+    title: "Sub-30s Neural Blitz",
     description:
-      "An outbound dial launches in under 45 seconds, day or night, while the lead is still on your listing page.",
-    chips: ["< 45s dial", "24/7 coverage", "Local caller ID"],
+      "An outbound voice call launches in under thirty seconds with WhatsApp and SMS staged behind it, day or night.",
+    chips: ["< 30s dial", "24/7 coverage", "Local caller ID"],
     icon: PhoneOutgoing,
   },
   {
     index: "03",
-    title: "Deep Qualification",
+    title: "Qualification & Objection Handling",
     description:
-      "The agent works objections and confirms the four things your ISA would ask, then scores intent on the fly.",
+      "The agent works the objection, confirms the four things your ISA would ask, and scores intent live on the line.",
     chips: ["Budget", "Location", "Timeline", "Pre-Approval"],
     icon: BadgeCheck,
   },
   {
     index: "04",
-    title: "Live Warm Transfer & Calendar Sync",
+    title: "Escalation, Handoff & Client Ops",
     description:
-      "Qualified buyers are transferred to your agent on the same call, with the tour booked and the record already written.",
-    chips: ["Follow Up Boss", "Lofty", "Google Calendar"],
+      "Ghosted contacts escalate to the household, qualified buyers warm-transfer, and signed clients roll into Tier-1 support and dunning.",
+    chips: ["Household tree", "Warm transfer", "Tier-1 desk", "Dunning"],
     icon: CalendarSync,
   },
 ];
@@ -135,7 +135,7 @@ export default function PipelineAssembly() {
   return (
     <section
       ref={sectionRef}
-      id="engine"
+      id="pipeline"
       className="relative flex min-h-screen scroll-mt-24 flex-col justify-center overflow-hidden bg-canvas-sunk py-20 lg:py-0"
     >
       <div
@@ -159,17 +159,17 @@ export default function PipelineAssembly() {
           </span>
           <MaskedText
             as="h2"
-            className="mt-4 font-display text-[clamp(1.8rem,3.5vw,2.7rem)] font-extrabold leading-[1.07] tracking-tightest text-ink"
+            className="mt-4 font-display text-[clamp(1.7rem,4vw,2.7rem)] font-extrabold leading-[1.07] tracking-tightest text-ink"
             lines={[
               <>Four moves between a click</>,
               <>
-                and a <span className="text-gradient">booked showing</span>.
+                and a <span className="text-gradient">closed loop</span>.
               </>,
             ]}
           />
-          <p className="mx-auto mt-4 max-w-[540px] text-[15.5px] leading-relaxed text-steel">
-            The whole pipeline assembles itself. No dialer queues, no lead round-robin, no
-            Monday morning catch-up on Friday night inquiries.
+          <p className="mx-auto mt-4 max-w-[540px] text-[15px] leading-relaxed text-steel sm:text-[15.5px]">
+            The whole pipeline assembles itself. No dialer queues, no lead round-robin, no Monday
+            morning catch-up on Friday night inquiries.
           </p>
         </div>
 
