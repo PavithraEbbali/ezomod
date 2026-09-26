@@ -1,30 +1,19 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Sora, JetBrains_Mono } from "next/font/google";
-import LenisProvider from "@/components/providers/LenisProvider";
+import { Inter, Sora } from "next/font/google";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["500", "600", "700"],
   variable: "--font-sora",
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  variable: "--font-mono",
-  display: "swap",
-});
-
 const DESCRIPTION =
-  "EZOMOD deploys autonomous omnichannel AI agents that orchestrate neural voice calls, WhatsApp, SMS, and email to qualify buyers, handle complex objections, escalate ghosted contacts, and book pipeline 24/7.";
+  "EZOMOD builds custom AI systems inside your existing CRM that call, text, and email every lead, follow up until they respond, and book appointments for your team.";
 
 /**
  * Absolute base for OG/Twitter asset URLs. Set NEXT_PUBLIC_SITE_URL once a custom
@@ -39,23 +28,20 @@ const SITE_URL =
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "EZOMOD — Autonomous Omnichannel Lead Management & Client Operations AI",
+    default: "EZOMOD — Custom AI Lead Management Built Into Your CRM",
     template: "%s · EZOMOD",
   },
   description: DESCRIPTION,
   keywords: [
-    "autonomous revenue operations",
-    "omnichannel AI agent",
+    "AI lead follow-up",
     "speed to lead",
-    "neural voice qualification",
-    "WhatsApp Business API automation",
-    "lead escalation",
-    "Tier-1 client support automation",
-    "payment dunning automation",
+    "real estate lead management",
+    "AI voice calls",
+    "CRM automation",
     "Follow Up Boss automation",
   ],
   openGraph: {
-    title: "EZOMOD — Every Lead. Every Channel. Contacted in Under 30 Seconds.",
+    title: "EZOMOD — AI systems that manage your leads from first click to closed deal",
     description: DESCRIPTION,
     url: SITE_URL,
     siteName: "EZOMOD",
@@ -64,9 +50,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "EZOMOD — Autonomous Omnichannel RevOps Engine",
-    description:
-      "Neural voice, WhatsApp, SMS and email orchestrated by one agent — from first inbound signal to post-close client desk.",
+    title: "EZOMOD — Custom AI Lead Management",
+    description: DESCRIPTION,
     images: ["/logo.png"],
   },
   icons: { icon: "/logo.png", apple: "/logo.png" },
@@ -81,9 +66,11 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable} ${mono.variable}`}>
-      <body className="bg-canvas text-ink">
-        <LenisProvider>{children}</LenisProvider>
+    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+      <body>
+        <Navbar />
+        <main className="pt-16">{children}</main>
+        <Footer />
       </body>
     </html>
   );

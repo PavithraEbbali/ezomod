@@ -1,29 +1,21 @@
-import AdaptiveDecisionMatrix from "@/components/AdaptiveDecisionMatrix";
-import BentoGrid from "@/components/BentoGrid";
-import ComparisonSection from "@/components/ComparisonSection";
-import CtaSection from "@/components/CtaSection";
-import Footer from "@/components/Footer";
+import ContactSection from "@/components/ContactSection";
+import Differentiator from "@/components/Differentiator";
 import Hero from "@/components/Hero";
-import IntegrationsMarquee from "@/components/IntegrationsMarquee";
-import MetricsBar from "@/components/MetricsBar";
-import Navbar from "@/components/Navbar";
-import PipelineAssembly from "@/components/PipelineAssembly";
+import Integrations from "@/components/Integrations";
+import OperationalShift from "@/components/OperationalShift";
+import Process from "@/components/Process";
+import Services from "@/components/Services";
 
 export default function Page() {
   return (
     <>
-      <Navbar />
-      <main className="relative">
-        <Hero />
-        <MetricsBar />
-        <PipelineAssembly />
-        <BentoGrid />
-        <AdaptiveDecisionMatrix />
-        <ComparisonSection />
-        <IntegrationsMarquee />
-        <CtaSection />
-      </main>
-      <Footer />
+      <Hero />
+      <Differentiator />
+      <Services />
+      <Process />
+      <OperationalShift />
+      <Integrations />
+      <ContactSection />
     </>
   );
 }
