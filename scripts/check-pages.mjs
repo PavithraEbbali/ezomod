@@ -2,7 +2,8 @@
 //   node scripts/check-pages.mjs
 // Checks: title/description length, canonical, single H1, duplicate titles, opacity:0 in main,
 // JSON-LD parses + expected types + site-level @id references resolve, FAQPage text matches
-// the visible page, BreadcrumbList is well-formed, and NO "{{TODO" placeholders anywhere.
+// the visible page, BreadcrumbList is well-formed, NO "{{TODO" placeholders anywhere,
+// no broken internal links or #anchors, and the sitemap lists exactly the indexable pages.
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 
@@ -60,6 +61,9 @@ function walkLd(node, acc) {
 const titles = new Map();
 const rows = [];
 const todoPages = [];
+const pageIds = new Map();
+const links = [];
+const indexable = new Set();
 let problems = 0;
 
 for (const file of files.sort()) {
@@ -135,9 +139,50 @@ for (const file of files.sort()) {
   if (todoLd) issues.push("{{TODO in JSON-LD");
   if (todoVisible || todoLd) todoPages.push(path);
 
+  // Collect anchors and internal links for the site-wide link check below.
+  pageIds.set(path, new Set([...body.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1])));
+  for (const m of body.matchAll(/<a\s[^>]*href="([^"]+)"/g)) {
+    const href = decode(m[1]);
+    if (href.startsWith("/") || href.startsWith("#") || href.startsWith(SITE)) links.push({ from: path, href });
+  }
+  if (!noindex && path !== "/404") indexable.add(path);
+
   problems += issues.length;
   rows.push({ path, words, ld: [...new Set(topTypes)].join(", "), noindex: noindex ? "yes" : "", issues: issues.join("; ") || "ok" });
 }
+
+// --- Broken internal links (pages, files and #anchors) ---
+const exists = (rel) => {
+  try {
+    return statSync(join(OUT, rel)).isFile();
+  } catch {
+    return false;
+  }
+};
+const broken = new Set();
+for (const { from, href } of links) {
+  const url = new URL(href, `${SITE}${from}`);
+  if (url.origin !== SITE) continue;
+  const p = url.pathname.replace(/\/+$/, "") || "/";
+  const target = pageIds.has(p) ? p : null;
+  const fileOk = target || exists(p) || exists(`${p}.html`) || exists(`${p}/index.html`);
+  if (!fileOk) broken.add(`${from} -> ${href} (missing page)`);
+  else if (url.hash && target && !pageIds.get(target).has(decodeURIComponent(url.hash.slice(1)))) broken.add(`${from} -> ${href} (missing #anchor)`);
+}
+console.log(`Link check: ${links.length} internal links, ${broken.size} broken.`);
+for (const b of broken) console.log(`  BROKEN ${b}`);
+problems += broken.size;
+
+// --- Sitemap covers every indexable page, and only those ---
+const sitemap = readFileSync(join(OUT, "sitemap.xml"), "utf8");
+const inSitemap = new Set([...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1].replace(SITE, "") || "/"));
+const missingFromSitemap = [...indexable].filter((p) => !inSitemap.has(p));
+const extraInSitemap = [...inSitemap].filter((p) => !indexable.has(p));
+console.log(`Sitemap: ${inSitemap.size} URLs; missing ${missingFromSitemap.length}; non-indexable listed ${extraInSitemap.length}.`);
+for (const p of missingFromSitemap) console.log(`  NOT IN SITEMAP ${p}`);
+for (const p of extraInSitemap) console.log(`  IN SITEMAP BUT NOT INDEXABLE ${p}`);
+problems += missingFromSitemap.length + extraInSitemap.length;
+console.log("");
 
 for (const r of rows) {
   console.log(`${r.issues === "ok" ? "PASS" : "FAIL"}  ${r.path}  (${r.words} words${r.noindex ? ", noindex" : ""})`);

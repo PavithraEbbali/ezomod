@@ -3,7 +3,7 @@
 `{{TODO: ...}}` marks real information that is still missing. Never fill these with made-up details.
 `node scripts/check-pages.mjs` (run after `npm run build`) fails if any `{{TODO` is left in the visible HTML or JSON-LD.
 
-**Status: no placeholders remain on the site.** All 16 were filled or removed on 2026-10-05:
+**Status: no placeholders remain on the site.** Last verified on 2026-10-05 with a full build and `check-pages.mjs` (21 pages, 952 links, 0 problems). All 16 were filled or removed on 2026-10-05:
 
 - Founder: Gowrav K M, Founder, with his bio.
 - Founded: 2026.
@@ -50,3 +50,10 @@ These live only in environment variables, never in the code or the rendered page
 ## Social proof (hidden until filled)
 
 `lib/trust.ts` holds three empty lists: `CLIENT_LOGOS`, `TESTIMONIALS` and `RESULTS`. The trust section on the home page stays hidden until you add real entries, used with each client's permission.
+
+## Before launch: what's left
+
+1. Set the environment variables (table above) in Cloudflare Pages. See `OFF_SITE_CHECKLIST.md`, Part A.
+2. Review the 3 draft blog posts and publish them (`draft: false`) or keep them as drafts.
+3. Optional: add `areaServed` and extra `sameAs` profiles to `lib/schema.ts` as they become available (`OFF_SITE_CHECKLIST.md`, Part D2).
+4. Optional: add real client logos, testimonials and results to `lib/trust.ts`, with permission.

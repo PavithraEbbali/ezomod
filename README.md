@@ -21,7 +21,7 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build    # static export to out/
 node scripts/generate-icons.mjs   # regenerate favicon / app icons from public/logo.png
-node scripts/check-pages.mjs      # after a build: meta, H1, JSON-LD and {{TODO}} checks on every page
+node scripts/check-pages.mjs      # after a build: meta, H1, JSON-LD, {{TODO}}, broken links and sitemap checks
 ```
 
 ## Structure
@@ -57,6 +57,12 @@ public/
 - No pricing anywhere on the site.
 - Structured data: build JSON-LD with `lib/schema.ts` and render it with `components/JsonLd.tsx` (server-side). All entities reference one Organization `@id`. Never put placeholder values in JSON-LD; omit the field instead.
 - `{{TODO: ...}}` marks missing real content. `scripts/check-pages.mjs` fails while any remain; see `TODO_CONTENT.md`.
+
+## Handoff docs
+
+- `SEO_CHANGES.md`: everything that changed, plus the page list with target keywords.
+- `TODO_CONTENT.md`: real information and configuration still needed.
+- `OFF_SITE_CHECKLIST.md`: step-by-step setup and launch tasks outside the code.
 
 ## Brand palette
 
