@@ -1,19 +1,23 @@
 import type { ReactNode } from "react";
+import Breadcrumbs from "@/components/content/Breadcrumbs";
 import PageHeader from "@/components/PageHeader";
 
 export type LegalSection = { heading: string; body: ReactNode };
 
 export default function LegalDocument({
   title,
+  path,
   updated,
   sections,
 }: {
   title: string;
+  path: string;
   updated: string;
   sections: LegalSection[];
 }) {
   return (
     <>
+      <Breadcrumbs items={[{ name: title, path }]} />
       <PageHeader title={title}>
         <p>Last updated: {updated}</p>
       </PageHeader>

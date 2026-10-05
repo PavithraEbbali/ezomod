@@ -115,5 +115,5 @@ const SECTIONS: LegalSection[] = [
 ];
 
 export default function TermsPage() {
-  return <LegalDocument title="Terms of Service" updated="September 26, 2026" sections={SECTIONS} />;
+  return <LegalDocument path="/terms" title="Terms of Service" updated="September 26, 2026" sections={SECTIONS} />;
 }

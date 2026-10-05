@@ -4,7 +4,9 @@ import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import SectionIntro from "@/components/content/SectionIntro";
 import ServiceIcon from "@/components/content/ServiceIcon";
+import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/PageHeader";
+import { serviceList } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { SERVICES, servicePath } from "@/lib/services";
 
@@ -29,7 +31,8 @@ const CHOOSER = [
 export default function Page() {
   return (
     <>
-      <Breadcrumbs items={[{ name: "Services" }]} />
+      <JsonLd data={serviceList()} />
+      <Breadcrumbs items={[{ name: "Services", path: "/services" }]} />
       <PageHeader title="AI automation services">
         <p>
           Ezomod designs, builds and maintains AI systems that win more leads and remove repetitive

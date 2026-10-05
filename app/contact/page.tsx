@@ -23,7 +23,7 @@ const LINK = "font-medium text-[#007BFF] underline decoration-[#007BFF]/30 under
 export default function Page() {
   return (
     <>
-      <Breadcrumbs items={[{ name: "Contact" }]} />
+      <Breadcrumbs items={[{ name: "Contact", path: "/contact" }]} />
       <PageHeader title="Book a free 30-minute consultation">
         <p>
           Talk to the people who would build your system. We&apos;ll look at how things work today,

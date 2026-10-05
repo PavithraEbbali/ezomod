@@ -11,7 +11,9 @@ import ServiceCards from "@/components/content/ServiceCards";
 import ServiceIcon from "@/components/content/ServiceIcon";
 import Process from "@/components/Process";
 import ButtonLink from "@/components/ui/ButtonLink";
-import { getService, type Service } from "@/lib/services";
+import JsonLd from "@/components/JsonLd";
+import { faqPage, service as serviceSchema } from "@/lib/schema";
+import { getService, servicePath, type Service } from "@/lib/services";
 import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 
 const BAND = "section border-y border-[#00A3FF]/10 bg-white/60";
@@ -26,7 +28,8 @@ export default function ServicePage({ service, extra }: { service: Service; extr
 
   return (
     <>
-      <Breadcrumbs items={[{ name: "Services", path: "/services" }, { name: service.name }]} />
+      <JsonLd data={[serviceSchema(service), faqPage(service.faqs)]} />
+      <Breadcrumbs items={[{ name: "Services", path: "/services" }, { name: service.name, path: servicePath(service.slug) }]} />
 
       <header className="relative isolate overflow-hidden border-b border-[#00A3FF]/10">
         <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(600px_300px_at_15%_0%,rgba(0,123,255,0.08),transparent),radial-gradient(500px_300px_at_85%_100%,rgba(34,197,94,0.08),transparent)]" />

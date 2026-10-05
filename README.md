@@ -21,6 +21,7 @@ npm install
 npm run dev      # http://localhost:3000
 npm run build    # static export to out/
 node scripts/generate-icons.mjs   # regenerate favicon / app icons from public/logo.png
+node scripts/check-pages.mjs      # after a build: meta, H1, JSON-LD and {{TODO}} checks on every page
 ```
 
 ## Structure
@@ -54,6 +55,8 @@ public/
 - All SEO-critical text must be server-rendered. Animations may move or scale content, but must never start it at `opacity: 0`.
 - Brand: write "Ezomod" in body text. "EZOMOD" is only for the wordmark and as `alternateName` in structured data.
 - No pricing anywhere on the site.
+- Structured data: build JSON-LD with `lib/schema.ts` and render it with `components/JsonLd.tsx` (server-side). All entities reference one Organization `@id`. Never put placeholder values in JSON-LD; omit the field instead.
+- `{{TODO: ...}}` marks missing real content. `scripts/check-pages.mjs` fails while any remain; see `TODO_CONTENT.md`.
 
 ## Brand palette
 

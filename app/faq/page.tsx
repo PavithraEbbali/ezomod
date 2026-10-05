@@ -4,7 +4,9 @@ import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import FaqList from "@/components/content/FaqList";
 import PageHeader from "@/components/PageHeader";
-import { FAQ_GROUPS } from "@/lib/faq";
+import JsonLd from "@/components/JsonLd";
+import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq";
+import { faqPage } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = pageMetadata({
@@ -19,7 +21,8 @@ const slug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 export default function Page() {
   return (
     <>
-      <Breadcrumbs items={[{ name: "FAQ" }]} />
+      <JsonLd data={faqPage(ALL_FAQS)} />
+      <Breadcrumbs items={[{ name: "FAQ", path: "/faq" }]} />
       <PageHeader title="Frequently asked questions">
         <p>
           Short, direct answers about Ezomod, our AI automation services and how we work. Can&apos;t

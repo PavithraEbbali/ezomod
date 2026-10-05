@@ -1,11 +1,18 @@
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbList } from "@/lib/schema";
 
 export type Crumb = { name: string; path?: string };
 
-/** Visible breadcrumb trail. "Home" is prepended automatically; the last crumb is the current page. */
+/**
+ * Visible breadcrumb trail plus matching BreadcrumbList JSON-LD. "Home" is prepended
+ * automatically; the last crumb is the current page (give it a path so it appears in the schema).
+ * Crumbs without a path (e.g. "Industries") are shown but left out of the schema.
+ */
 export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   const trail: Crumb[] = [{ name: "Home", path: "/" }, ...items];
+  const schemaCrumbs = trail.filter((c): c is Required<Crumb> => Boolean(c.path));
   return (
     <nav aria-label="Breadcrumb" className="container-x pt-6">
       <ol className="flex flex-wrap items-center gap-1 text-sm text-slate-500">
@@ -27,6 +34,7 @@ export default function Breadcrumbs({ items }: { items: Crumb[] }) {
           );
         })}
       </ol>
+      <JsonLd data={breadcrumbList(schemaCrumbs)} />
     </nav>
   );
 }

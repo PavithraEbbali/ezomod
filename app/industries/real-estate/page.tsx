@@ -8,7 +8,9 @@ import ItemGrid from "@/components/content/ItemGrid";
 import SectionIntro from "@/components/content/SectionIntro";
 import ServiceCards from "@/components/content/ServiceCards";
 import HeroTelemetry from "@/components/HeroTelemetry";
+import JsonLd from "@/components/JsonLd";
 import OperationalShift from "@/components/OperationalShift";
+import { faqPage } from "@/lib/schema";
 import Process from "@/components/Process";
 import ButtonLink from "@/components/ui/ButtonLink";
 import { pageMetadata } from "@/lib/seo";
@@ -73,7 +75,8 @@ export default function Page() {
 
   return (
     <>
-      <Breadcrumbs items={[{ name: "Industries" }, { name: "Real Estate" }]} />
+      <JsonLd data={faqPage(FAQS)} />
+      <Breadcrumbs items={[{ name: "Industries" }, { name: "Real Estate", path: "/industries/real-estate" }]} />
 
       <header className="relative isolate overflow-hidden border-b border-[#00A3FF]/10">
         <div aria-hidden className="absolute inset-0 -z-10">

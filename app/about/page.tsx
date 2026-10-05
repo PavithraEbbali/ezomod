@@ -8,7 +8,9 @@ import SectionIntro from "@/components/content/SectionIntro";
 import Differentiator from "@/components/Differentiator";
 import PageHeader from "@/components/PageHeader";
 import Process from "@/components/Process";
+import JsonLd from "@/components/JsonLd";
 import { HOW_WE_WORK } from "@/lib/company";
+import { professionalService } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { SERVICES, servicePath } from "@/lib/services";
 import { CONTACT_EMAIL, CONTACT_HREF, LINKEDIN_URL, SITE_URL } from "@/lib/site";
@@ -52,7 +54,8 @@ export default function Page() {
 
   return (
     <>
-      <Breadcrumbs items={[{ name: "About" }]} />
+      <JsonLd data={professionalService()} />
+      <Breadcrumbs items={[{ name: "About", path: "/about" }]} />
       <PageHeader title="About Ezomod">
         <p>
           Ezomod is an AI automation agency that designs, builds and maintains AI systems for

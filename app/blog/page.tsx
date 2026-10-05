@@ -18,7 +18,7 @@ export default function Page() {
 
   return (
     <>
-      <Breadcrumbs items={[{ name: "Blog" }]} />
+      <Breadcrumbs items={[{ name: "Blog", path: "/blog" }]} />
       <PageHeader title="The Ezomod blog">
         <p>Plain-English guides on AI automation, lead generation and AI agents for growing businesses.</p>
       </PageHeader>

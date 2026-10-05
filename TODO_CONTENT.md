@@ -40,7 +40,21 @@ These aren't invented facts, but please confirm they match how you describe Ezom
 - **Tools and integrations lists** on each service page (`lib/services-a.ts`, `lib/services-b.ts`). They are phrased as "works with / can connect to". Remove any you would not want to offer.
 - **Industries lists** on each service page and the home page.
 
-## Coming in later phases
+## Structured data (JSON-LD) fields left out
 
-- Phase 3: Organization schema `sameAs` (other social profiles), `areaServed`, `founder`, address and phone for ProfessionalService.
+These fields are **omitted** from the schema until real values exist. Placeholders are never put in JSON-LD; the build fails if one gets in. Add each value in `lib/schema.ts`:
+
+| Field | Schema | What to provide |
+| --- | --- | --- |
+| `founder` | Organization | Founder's full name (and optionally LinkedIn URL) |
+| `foundingDate` | Organization | Year founded, e.g. `"2024"` |
+| `areaServed` | Organization, ProfessionalService, Service | Countries/regions you serve, e.g. `["US", "CA"]` or `"Worldwide"` |
+| `address` | ProfessionalService | Street, city, region, postcode, country (only if you want it public) |
+| `telephone` | Organization, ProfessionalService | Public business phone number |
+| `sameAs` | Organization | Extra profile URLs as they go live (Crunchbase, Clutch, GoodFirms, X, YouTube, Instagram...). Add them to `SAME_AS`. Only LinkedIn is there now. |
+| `author` | BlogPosting | Added automatically once `{{TODO: author name}}` in `lib/blog.ts` is replaced with a real name |
+
+FAQ questions whose answer still contains a placeholder ("Where is Ezomod based?", "How does Ezomod handle data security?") are left out of the FAQPage schema. They are added automatically once the placeholder is replaced.
+
+## Coming in later phases
 - Phase 4: `{{TODO: booking URL}}` (Cal.com or Calendly), client logos, testimonials and results (hidden until filled), and the GA4 ID.

@@ -8,7 +8,9 @@ import SectionIntro from "@/components/content/SectionIntro";
 import ServiceCards from "@/components/content/ServiceCards";
 import Differentiator from "@/components/Differentiator";
 import Hero from "@/components/Hero";
+import JsonLd from "@/components/JsonLd";
 import Process from "@/components/Process";
+import { faqPage, professionalService } from "@/lib/schema";
 import { HOW_WE_WORK } from "@/lib/company";
 import { HOME_FAQS } from "@/lib/faq";
 import { pageMetadata } from "@/lib/seo";
@@ -35,6 +37,7 @@ const OTHER_INDUSTRIES = [
 export default function Page() {
   return (
     <>
+      <JsonLd data={[professionalService(), faqPage(HOME_FAQS)]} />
       <Hero />
 
       <section id="services" className="section">

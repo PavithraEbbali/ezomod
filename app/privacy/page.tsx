@@ -123,5 +123,5 @@ const SECTIONS: LegalSection[] = [
 ];
 
 export default function PrivacyPage() {
-  return <LegalDocument title="Privacy Policy" updated="September 26, 2026" sections={SECTIONS} />;
+  return <LegalDocument path="/privacy" title="Privacy Policy" updated="September 26, 2026" sections={SECTIONS} />;
 }

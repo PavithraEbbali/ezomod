@@ -4,7 +4,9 @@ import { notFound } from "next/navigation";
 import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import ServiceCards from "@/components/content/ServiceCards";
-import { POSTS, getPost, readingTime, type Block } from "@/lib/blog";
+import JsonLd from "@/components/JsonLd";
+import { POSTS, getPost, readingTime, wordCount, type Block } from "@/lib/blog";
+import { blogPosting } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { getService, type Service } from "@/lib/services";
 
@@ -77,9 +79,13 @@ export default async function Page({ params }: Props) {
   const related = POSTS.filter((p) => p.slug !== post.slug && (!p.draft || post.draft)).slice(0, 2);
   const services = post.relatedServices.map(getService).filter((s): s is Service => Boolean(s));
 
+  // Drafts are noindex, so they carry no Article schema in production builds.
+  const showSchema = !post.draft || process.env.NODE_ENV !== "production";
+
   return (
     <>
-      <Breadcrumbs items={[{ name: "Blog", path: "/blog" }, { name: post.title }]} />
+      {showSchema ? <JsonLd data={blogPosting(post, wordCount(post))} /> : null}
+      <Breadcrumbs items={[{ name: "Blog", path: "/blog" }, { name: post.title, path: `/blog/${post.slug}` }]} />
 
       <article className="container-x py-10 sm:py-14">
         {post.draft ? (
