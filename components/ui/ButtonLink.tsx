@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { EVENTS } from "@/lib/analytics";
+import { CONSULTATION_HREF } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 type Variant = "primary" | "secondary" | "inverse";
@@ -39,8 +41,10 @@ export default function ButtonLink({
     );
   }
 
+  // Booking CTAs report a conversion event (see components/Analytics.tsx).
+  const trackAttr = href === CONSULTATION_HREF ? { "data-track": EVENTS.booking } : {};
   return (
-    <Link href={href} className={classes} onClick={onClick}>
+    <Link href={href} className={classes} onClick={onClick} {...trackAttr}>
       {children}
     </Link>
   );

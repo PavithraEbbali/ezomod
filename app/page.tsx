@@ -10,6 +10,7 @@ import Differentiator from "@/components/Differentiator";
 import Hero from "@/components/Hero";
 import JsonLd from "@/components/JsonLd";
 import Process from "@/components/Process";
+import TrustSection from "@/components/TrustSection";
 import { faqPage, professionalService } from "@/lib/schema";
 import { HOW_WE_WORK } from "@/lib/company";
 import { HOME_FAQS } from "@/lib/faq";
@@ -22,7 +23,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
 });
 
-const LINK = "font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
+const LINK = "font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
 
 const OTHER_INDUSTRIES = [
   "Professional services",
@@ -78,7 +79,7 @@ export default function Page() {
                 phone, showings booked on your calendar, and automation inside Follow Up Boss, Lofty
                 and Salesforce.
               </p>
-              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#007BFF]">
+              <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#0062CC]">
                 AI automation for real estate
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
               </span>
@@ -98,6 +99,8 @@ export default function Page() {
         intro="Every project follows four clear steps. We do the technical work; your team reviews and approves each stage."
         steps={HOW_WE_WORK}
       />
+
+      <TrustSection />
 
       <section id="faq" className="section">
         <div className="container-x">

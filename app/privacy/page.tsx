@@ -113,7 +113,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <p>
         Questions about this policy can be sent to{" "}
-        <a href={CONTACT_HREF} className="break-all font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+        <a href={CONTACT_HREF} className="break-all font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
           {CONTACT_EMAIL}
         </a>
         .

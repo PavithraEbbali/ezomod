@@ -28,11 +28,11 @@ export default function Page() {
           {posts.length === 0 ? (
             <p className="lead">
               New articles are on the way. In the meantime, read the{" "}
-              <Link href="/faq" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2">
+              <Link href="/faq" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2">
                 Ezomod FAQ
               </Link>{" "}
               or explore{" "}
-              <Link href="/services" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2">
+              <Link href="/services" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2">
                 our services
               </Link>
               .

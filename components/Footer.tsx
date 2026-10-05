@@ -31,11 +31,11 @@ const LINK_CLASS = "text-sm text-slate-600 transition-colors duration-200 hover:
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200/80 bg-[#F8FAFC] text-slate-600">
+    <footer className="border-t border-slate-200/80 bg-[#F8FAFC] pb-20 text-slate-600 sm:pb-0">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_1fr_1fr]">
         <div className="max-w-sm">
           <Link href="/" aria-label="Ezomod home" className="flex items-center gap-2.5">
-            <Image src="/logo.png" alt="" width={512} height={512} sizes="32px" className="h-8 w-8 rounded-md object-contain" />
+            <Image src="/logo-64.png" alt="" width={64} height={64} sizes="32px" className="h-8 w-8 rounded-md object-contain" />
             <span className="font-display text-lg font-bold tracking-tight text-[#0F172A]">
               EZO<span className="text-brand">MOD</span>
             </span>
@@ -46,7 +46,7 @@ export default function Footer() {
           </p>
           <a
             href={CONTACT_HREF}
-            className="mt-4 inline-block break-all text-sm font-medium text-[#007BFF] transition-colors hover:text-[#0060CC]"
+            className="mt-4 inline-block break-all text-sm font-medium text-[#0062CC] transition-colors hover:text-[#0060CC]"
           >
             {CONTACT_EMAIL}
           </a>

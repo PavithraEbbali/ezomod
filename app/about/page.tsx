@@ -22,7 +22,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/about",
 });
 
-const LINK = "font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
+const LINK = "font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
 
 const TEAM = [
   {
@@ -141,7 +141,7 @@ export default function Page() {
             {TEAM.map((member) => (
               <li key={member.name} className="rounded-2xl border border-slate-200/80 bg-white p-6">
                 <h3 className="text-lg font-semibold text-slate-900">{member.name}</h3>
-                <p className="text-sm font-medium text-[#007BFF]">{member.role}</p>
+                <p className="text-sm font-medium text-[#0062CC]">{member.role}</p>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600">{member.bio}</p>
               </li>
             ))}

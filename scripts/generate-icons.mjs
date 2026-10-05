@@ -32,4 +32,5 @@ writeFileSync("app/icon.png", await png(512));
 writeFileSync("app/apple-icon.png", await png(180));
 writeFileSync("public/icon-192.png", await png(192));
 writeFileSync("public/icon-512.png", await png(512));
+writeFileSync("public/logo-64.png", await sharp(SRC).resize(64, 64).png({ palette: true }).toBuffer());
 console.log("icons written");

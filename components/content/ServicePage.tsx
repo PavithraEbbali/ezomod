@@ -123,7 +123,7 @@ export default function ServicePage({ service, extra }: { service: Service; extr
             {servesRealEstate ? (
               <p className="mt-6 text-slate-600">
                 Working in property? See{" "}
-                <Link href="/industries/real-estate" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+                <Link href="/industries/real-estate" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
                   AI automation for real estate teams
                 </Link>
                 .
@@ -141,7 +141,7 @@ export default function ServicePage({ service, extra }: { service: Service; extr
           </div>
           <p className="mt-6 text-slate-600">
             More questions? Read the{" "}
-            <Link href="/faq" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+            <Link href="/faq" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
               Ezomod FAQ
             </Link>
             .
@@ -154,7 +154,7 @@ export default function ServicePage({ service, extra }: { service: Service; extr
           <SectionIntro title="Related services">
             <p>
               These services are often combined with {service.navLabel}. See{" "}
-              <Link href="/services" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+              <Link href="/services" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
                 all Ezomod services
               </Link>
               .

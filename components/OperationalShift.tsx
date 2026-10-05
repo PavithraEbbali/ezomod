@@ -15,7 +15,7 @@ type Standard = {
 const STANDARDS: readonly Standard[] = [
   {
     icon: Activity,
-    iconTone: "text-[#007BFF]",
+    iconTone: "text-[#0062CC]",
     label: "Response in under 30 seconds",
     title: "Every new lead gets a call, text or email",
     text: "When an inquiry arrives from Meta Ads, Google Local Services Ads or your IDX website, the system calls the lead within thirty seconds using a natural AI voice. If they don't answer, it follows up by SMS or WhatsApp.",
@@ -23,7 +23,7 @@ const STANDARDS: readonly Standard[] = [
   },
   {
     icon: BadgeCheck,
-    iconTone: "text-[#007BFF]",
+    iconTone: "text-[#0062CC]",
     label: "Qualifies the lead on the call",
     title: "Asks the questions your agents would ask",
     text: "The AI agent has a natural conversation to check budget, financing, move-in timeline and preferred neighbourhoods, and answers local questions about HOA fees, tax rates and recent sales.",
@@ -68,7 +68,7 @@ export default function OperationalShift() {
                 </span>
               </span>
 
-              <p className="mt-6 text-sm font-medium text-[#007BFF]">{item.label}</p>
+              <p className="mt-6 text-sm font-medium text-[#0062CC]">{item.label}</p>
               <h3 className="mt-2 text-xl font-semibold leading-snug text-slate-900">{item.title}</h3>
               <p className="mt-3 leading-relaxed text-slate-600">{item.text}</p>
 

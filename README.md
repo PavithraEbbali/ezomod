@@ -69,8 +69,23 @@ public/
 | `azure-light` | `#00A3FF` | Gradient midpoint |
 | `mint` / `spring` | `#10B981` / `#22C55E` | Conversion accents |
 
+## Contact form and booking
+
+- `app/contact/page.tsx`: Cal.com embed (`components/contact/CalEmbed.tsx`, lazy-loaded, shown only when `NEXT_PUBLIC_CAL_LINK` is set) plus the contact form (`components/contact/ContactForm.tsx`).
+- `functions/api/contact.ts`: Cloudflare Pages Function handling `POST /api/contact`. It checks the honeypot, Turnstile and validation (`lib/contact.ts`, shared with the form), then sends the email through Resend.
+- GA4 events: `booking_click` (any "Book a free 30-minute call" button, or calendar interaction) and `generate_lead` (form sent). See `lib/analytics.ts`.
+
 ## Environment variables
 
-| Name | Purpose |
-| --- | --- |
-| `NEXT_PUBLIC_GSC_VERIFICATION` | Optional. Google Search Console verification token; adds the verification meta tag. |
+See `.env.example`. Set them in Cloudflare Pages (setup steps in `OFF_SITE_CHECKLIST.md`). `NEXT_PUBLIC_*` values are inlined at build time, so redeploy after changing them. Never commit real keys: the repository is public.
+
+| Name | Used by | Purpose |
+| --- | --- | --- |
+| `NEXT_PUBLIC_CAL_LINK` | build | Cal.com booking link |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | build | Turnstile widget |
+| `NEXT_PUBLIC_GA4_ID` | build | Google Analytics 4 (nothing loads if empty) |
+| `NEXT_PUBLIC_GSC_VERIFICATION` | build | Search Console meta tag |
+| `RESEND_API_KEY` | function (secret) | Resend API |
+| `CONTACT_FROM_EMAIL` | function | Verified sender address |
+| `CONTACT_TO_EMAIL` | function | Recipient (Ezomodalltech@ezomod.com) |
+| `TURNSTILE_SECRET_KEY` | function (secret) | Turnstile verification |

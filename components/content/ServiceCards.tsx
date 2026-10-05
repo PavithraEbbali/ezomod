@@ -23,7 +23,7 @@ export default function ServiceCards({
             </span>
             <Heading className="mt-5 text-lg font-semibold leading-snug text-slate-900">{service.name}</Heading>
             <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{service.summary}</p>
-            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#007BFF]">
+            <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-[#0062CC]">
               Learn about {service.navLabel}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" aria-hidden />
             </span>

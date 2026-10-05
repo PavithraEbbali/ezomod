@@ -113,7 +113,7 @@ function TimelineMicroUI() {
       </div>
       <div className="mt-4 flex justify-center">
         <span className="inline-flex items-center gap-2 rounded-lg border border-[#007BFF]/20 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 shadow-sm">
-          <CalendarClock className="h-3.5 w-3.5 text-[#007BFF]" aria-hidden />
+          <CalendarClock className="h-3.5 w-3.5 text-[#0062CC]" aria-hidden />
           Oct 14: Follow-up Scheduled
         </span>
       </div>
@@ -156,7 +156,7 @@ function ContactGraphMicroUI() {
         <span className="grid h-11 w-11 place-items-center rounded-full bg-[#007BFF] text-white shadow-md shadow-[#007BFF]/30 ring-4 ring-[#007BFF]/10">
           <User className="h-5 w-5" />
         </span>
-        <span className="text-[11px] font-medium text-[#007BFF]">Co-buyer</span>
+        <span className="text-[11px] font-medium text-[#0062CC]">Co-buyer</span>
       </div>
     </div>
   );
@@ -166,7 +166,7 @@ function SupportMicroUI() {
   return (
     <div className="relative flex min-h-[112px] items-center rounded-xl border border-slate-200/70 bg-slate-50/60 p-4">
       <div className="relative w-full max-w-sm">
-        <span className="flex w-fit items-center gap-2 rounded-lg border border-[#007BFF]/20 bg-white px-3 py-2 text-xs font-semibold text-[#007BFF] shadow-sm">
+        <span className="flex w-fit items-center gap-2 rounded-lg border border-[#007BFF]/20 bg-white px-3 py-2 text-xs font-semibold text-[#0062CC] shadow-sm">
           <CheckCircle2 className="h-3.5 w-3.5" aria-hidden />
           Support Ticket Assessed
         </span>

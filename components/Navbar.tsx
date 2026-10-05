@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ButtonLink from "@/components/ui/ButtonLink";
-import { CONSULTATION_HREF } from "@/lib/site";
+import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 
 const LINKS = [
   { label: "Industries", href: "/industries/real-estate" },
@@ -47,7 +47,7 @@ export default function Navbar({ services }: { services: NavService[] }) {
     <header className="fixed top-0 z-50 w-full border-b border-[#00A3FF]/10 bg-white/80 backdrop-blur-md">
       <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between gap-4">
         <Link href="/" aria-label="Ezomod home" className="flex items-center gap-2.5">
-          <Image src="/logo.png" alt="" width={512} height={512} priority sizes="32px" className="h-8 w-8 rounded-md object-contain" />
+          <Image src="/logo-64.png" alt="" width={64} height={64} priority sizes="32px" className="h-8 w-8 rounded-md object-contain" />
           <span className="font-display text-lg font-bold tracking-tight text-[#0F172A]">
             EZO<span className="text-brand">MOD</span>
           </span>
@@ -91,7 +91,7 @@ export default function Navbar({ services }: { services: NavService[] }) {
                   </li>
                 ))}
                 <li className="col-span-2 border-t border-slate-100 pt-1">
-                  <Link href="/services" className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-[#007BFF] hover:bg-[#F0F7FF]">
+                  <Link href="/services" className="block rounded-lg px-3 py-2.5 text-sm font-semibold text-[#0062CC] hover:bg-[#F0F7FF]">
                     All services →
                   </Link>
                 </li>
@@ -108,7 +108,7 @@ export default function Navbar({ services }: { services: NavService[] }) {
 
         <div className="flex items-center gap-2">
           <ButtonLink href={CONSULTATION_HREF} className="hidden px-4 py-2.5 sm:inline-flex">
-            Book a Consultation
+            {CTA_LABEL}
           </ButtonLink>
           <button
             type="button"
@@ -148,7 +148,7 @@ export default function Navbar({ services }: { services: NavService[] }) {
               </Link>
             ))}
             <ButtonLink href={CONSULTATION_HREF} className="mt-3 w-full">
-              Book a Consultation
+              {CTA_LABEL}
             </ButtonLink>
           </div>
         </div>

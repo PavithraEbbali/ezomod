@@ -5,6 +5,8 @@ const nextConfig = {
   poweredByHeader: false,
   images: { unoptimized: true },
   compiler: { removeConsole: process.env.NODE_ENV === "production" },
+  // Inline the (small) Tailwind CSS into each page so it does not block first render.
+  experimental: { inlineCss: true },
 };
 
 export default nextConfig;

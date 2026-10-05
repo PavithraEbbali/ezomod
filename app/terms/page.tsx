@@ -92,7 +92,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <p>
         Our handling of personal information is described in our{" "}
-        <Link href="/privacy" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+        <Link href="/privacy" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
           Privacy Policy
         </Link>
         .
@@ -105,7 +105,7 @@ const SECTIONS: LegalSection[] = [
       <p>
         We may update these terms from time to time. Continued use of the website or services after
         an update means you accept the revised terms. Questions can be sent to{" "}
-        <a href={CONTACT_HREF} className="break-all font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+        <a href={CONTACT_HREF} className="break-all font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
           {CONTACT_EMAIL}
         </a>
         .

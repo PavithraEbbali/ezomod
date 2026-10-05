@@ -37,7 +37,7 @@ function BlockView({ block }: { block: Block }) {
           <>
             {" "}
             Source:{" "}
-            <a href={block.cite.href} rel="noopener" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+            <a href={block.cite.href} rel="noopener" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
               {block.cite.label}
             </a>
             .

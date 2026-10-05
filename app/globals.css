@@ -16,7 +16,6 @@
     @apply bg-[#F8FAFC] font-sans text-[#0F172A] antialiased;
     background-image: radial-gradient(900px 600px at 0% 0%, #00a3ff15, transparent 70%),
       radial-gradient(800px 600px at 100% 30%, #22c55e15, transparent 70%);
-    background-attachment: fixed;
   }
 
   ::selection {

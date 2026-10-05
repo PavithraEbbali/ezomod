@@ -61,7 +61,7 @@ export default function Page() {
                 </div>
                 <p className="mt-4 font-medium text-slate-800">{service.definition}</p>
                 <p className="mt-3 flex-1 leading-relaxed text-slate-600">{service.summary}</p>
-                <Link href={servicePath(service.slug)} className="mt-5 text-sm font-medium text-[#007BFF] hover:underline">
+                <Link href={servicePath(service.slug)} className="mt-5 text-sm font-medium text-[#0062CC] hover:underline">
                   Learn more about {service.navLabel} →
                 </Link>
               </li>
@@ -90,7 +90,7 @@ export default function Page() {
                     <tr key={row.slug}>
                       <td className="px-5 py-4 text-slate-700">{row.need}</td>
                       <td className="px-5 py-4">
-                        <Link href={servicePath(row.slug)} className="font-medium text-[#007BFF] hover:underline">
+                        <Link href={servicePath(row.slug)} className="font-medium text-[#0062CC] hover:underline">
                           {service.name}
                         </Link>
                       </td>

@@ -27,7 +27,7 @@ export default function Page() {
         <p>
           Short, direct answers about Ezomod, our AI automation services and how we work. Can&apos;t
           find your question?{" "}
-          <Link href="/contact" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2">
+          <Link href="/contact" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2">
             Ask us directly
           </Link>
           .

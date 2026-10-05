@@ -24,7 +24,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/industries/real-estate",
 });
 
-const LINK = "font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
+const LINK = "font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
 
 const PROBLEMS = [
   {
@@ -80,8 +80,8 @@ export default function Page() {
 
       <header className="relative isolate overflow-hidden border-b border-[#00A3FF]/10">
         <div aria-hidden className="absolute inset-0 -z-10">
-          <div className="absolute -left-40 -top-40 h-[520px] w-[520px] rounded-full bg-[rgba(0,123,255,0.08)] blur-3xl" />
-          <div className="absolute -right-32 top-24 h-[480px] w-[480px] rounded-full bg-[rgba(34,197,94,0.08)] blur-3xl" />
+          <div className="absolute -left-56 -top-56 h-[760px] w-[760px] bg-[radial-gradient(closest-side,rgba(0,123,255,0.08),transparent)]" />
+          <div className="absolute -right-48 top-8 h-[720px] w-[720px] bg-[radial-gradient(closest-side,rgba(34,197,94,0.08),transparent)]" />
         </div>
         <div className="container-x grid items-center gap-12 py-12 sm:py-16 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
           <div>

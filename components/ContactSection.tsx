@@ -21,7 +21,7 @@ export default function ContactSection({
         <div className="relative isolate grid gap-10 overflow-hidden rounded-3xl bg-gradient-to-br from-[#0B1528] via-[#0D2040] to-[#0A2E28] p-8 text-white shadow-xl sm:p-10 md:p-14 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div
             aria-hidden
-            className="absolute -right-24 -top-24 -z-10 h-80 w-80 rounded-full bg-gradient-to-br from-[#00A3FF]/40 to-[#22C55E]/30 blur-3xl"
+            className="absolute -right-40 -top-40 -z-10 h-[30rem] w-[30rem] bg-[radial-gradient(closest-side,rgba(0,163,255,0.35),rgba(34,197,94,0.18)_55%,transparent)]"
           />
           <div>
             <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">

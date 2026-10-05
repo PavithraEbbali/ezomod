@@ -35,8 +35,18 @@ These fields are deliberately **omitted** until you decide to publish them. Add 
 
 All 3 posts are still `draft: true`. They are built with `noindex`, left out of the sitemap and the blog index in production, and carry no BlogPosting schema. Set `draft: false` in `lib/blog.ts` to publish one.
 
-## Coming in Phase 4
+## Configuration still needed (Phase 4)
 
-- `{{TODO: booking URL}}` (Cal.com or Calendly).
-- Client logos, testimonials and results (hidden until filled).
-- GA4 ID and Search Console verification (environment variables).
+These live only in environment variables, never in the code or the rendered pages. Setup steps are in `OFF_SITE_CHECKLIST.md`, Part A.
+
+| Setting | Where | Effect while missing |
+| --- | --- | --- |
+| `NEXT_PUBLIC_CAL_LINK` (Cal.com booking URL) | Cloudflare Pages env | No calendar; the Contact page shows the form and email link |
+| `RESEND_API_KEY`, `CONTACT_FROM_EMAIL` | Cloudflare Pages env (secret) | The form shows "temporarily unavailable" plus the email fallback |
+| `TURNSTILE_SECRET_KEY`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Pages env | Spam protection relies on the honeypot only |
+| `NEXT_PUBLIC_GA4_ID` | Cloudflare Pages env | No analytics loaded |
+| `NEXT_PUBLIC_GSC_VERIFICATION` | Cloudflare Pages env | No verification meta tag |
+
+## Social proof (hidden until filled)
+
+`lib/trust.ts` holds three empty lists: `CLIENT_LOGOS`, `TESTIMONIALS` and `RESULTS`. The trust section on the home page stays hidden until you add real entries, used with each client's permission.

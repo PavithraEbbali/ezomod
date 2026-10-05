@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import Footer from "@/components/Footer";
+import Analytics from "@/components/Analytics";
 import JsonLd from "@/components/JsonLd";
+import StickyCta from "@/components/StickyCta";
+import { GA4_ID, GSC_VERIFICATION } from "@/lib/config";
 import Navbar from "@/components/Navbar";
 import { organization, website } from "@/lib/schema";
 import { OG_IMAGE } from "@/lib/seo";
@@ -12,7 +15,10 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const sora = Sora({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["600", "700"],
+  // Headings render in the metric-matched fallback first; skipping the preload keeps
+  // bandwidth free for the body font and the first paint.
+  preload: false,
   variable: "--font-sora",
   display: "swap",
 });
@@ -39,9 +45,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [OG_IMAGE.url],
   },
-  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
-    : undefined,
+  verification: GSC_VERIFICATION ? { google: GSC_VERIFICATION } : undefined,
 };
 
 export const viewport: Viewport = {
@@ -58,6 +62,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar services={SERVICES.map((s) => ({ href: servicePath(s.slug), name: s.name }))} />
         <main className="pt-16">{children}</main>
         <Footer />
+        <StickyCta />
+        {GA4_ID ? <Analytics id={GA4_ID} /> : null}
       </body>
     </html>
   );

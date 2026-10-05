@@ -60,7 +60,7 @@ export default function HeroTelemetry() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <div className="mx-auto w-full max-w-md overflow-hidden rounded-xl border border-slate-200/60 bg-white/70 shadow-[0_20px_40px_-15px_rgba(0,30,70,0.08)] backdrop-blur-2xl">
+    <div className="mx-auto w-full max-w-md overflow-hidden rounded-xl border border-slate-200/60 bg-white/90 shadow-[0_20px_40px_-15px_rgba(0,30,70,0.08)]">
       <div className="relative flex h-8 items-center border-b border-slate-200/50 px-3">
         <span aria-hidden className="flex gap-1.5">
           <span className="h-2 w-2 rounded-full bg-slate-200" />

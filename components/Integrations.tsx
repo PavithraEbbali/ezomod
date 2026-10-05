@@ -17,7 +17,7 @@ const STAGES: readonly Stage[] = [
   {
     title: "Where leads come from",
     icon: Webhook,
-    iconClass: "bg-[#007BFF]/10 text-[#007BFF]",
+    iconClass: "bg-[#007BFF]/10 text-[#0062CC]",
     items: ["Ad platforms", "Property portals", "Website forms", "Direct API"],
   },
   {

@@ -13,7 +13,7 @@ export default function FaqList({ faqs, headingLevel = 3 }: { faqs: readonly { q
             <Heading className="text-base font-semibold leading-snug text-slate-900 sm:text-lg">{faq.q}</Heading>
             <span
               aria-hidden
-              className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-[#00A3FF]/25 text-[#007BFF] transition-transform group-open:rotate-45"
+              className="mt-1 grid h-6 w-6 shrink-0 place-items-center rounded-full border border-[#00A3FF]/25 text-[#0062CC] transition-transform group-open:rotate-45"
             >
               +
             </span>
