@@ -68,7 +68,7 @@ export default function HeroTelemetry() {
           <span className="h-2 w-2 rounded-full bg-slate-200" />
         </span>
         <span className="absolute inset-x-0 text-center font-mono text-[9px] tracking-widest text-slate-400">
-          EZOMOD / LIVE EXECUTION
+          <span className="uppercase">Ezomod / Live execution</span>
         </span>
       </div>
 
@@ -76,8 +76,8 @@ export default function HeroTelemetry() {
         {NODES.map((node, index) => (
           <motion.li
             key={node.time}
-            initial={reduceMotion ? false : { opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={reduceMotion ? false : { y: 6 }}
+            animate={{ y: 0 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.4 + index * 0.55 }}
             className="relative grid grid-cols-[4.5rem_11px_1fr] items-start gap-x-3 py-2.5"
           >

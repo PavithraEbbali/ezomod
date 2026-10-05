@@ -46,8 +46,8 @@ const nodeRing: Variants = {
 };
 
 const nodeCore: Variants = {
-  idle: { opacity: 0, scale: 0.4 },
-  lit: (i: number) => ({ opacity: 1, scale: 1, transition: { delay: i * SEGMENT, duration: 0.3 } }),
+  idle: { scale: 0.4 },
+  lit: (i: number) => ({ scale: 1, transition: { delay: i * SEGMENT, duration: 0.3 } }),
 };
 
 export default function Process() {

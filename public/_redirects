@@ -1,0 +1,11 @@
+# Cloudflare redirects (Pages and Workers static assets both read this file).
+# Cloudflare already maps /page.html and /page/ to /page for exported .html files,
+# so only legacy / alias paths are listed here. URL fragments (/#services) never reach
+# the server, so old anchor links are kept working by leaving those section ids on the home page.
+/index.html        /                 301
+/home              /                 301
+/book              /#contact         302
+/contact-us        /#contact         302
+/privacy-policy    /privacy          301
+/terms-of-service  /terms            301
+/terms-and-conditions /terms         301

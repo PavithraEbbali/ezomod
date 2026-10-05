@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import LegalDocument, { type LegalSection } from "@/components/LegalDocument";
 import { CONTACT_EMAIL, CONTACT_HREF } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "The terms that govern use of the EZOMOD website and services.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Terms of Service | Ezomod",
+  description:
+    "The terms that govern use of the Ezomod website and the AI automation, lead management and communication services we provide.",
+  path: "/terms",
+});
 
 const SECTIONS: LegalSection[] = [
   {
     heading: "Acceptance of terms",
     body: (
       <p>
-        By using this website or any service provided by EZOMOD, you agree to these Terms of
+        By using this website or any service provided by Ezomod, you agree to these Terms of
         Service. If you do not agree, please do not use the website or services.
       </p>
     ),
@@ -22,7 +25,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Our services",
     body: (
       <p>
-        EZOMOD designs, builds, and operates lead management and communication systems for
+        Ezomod designs, builds, and operates lead management and communication systems for
         businesses. The specific scope, deliverables, and fees for each client are set out in a
         separate written agreement, which takes precedence over these terms where the two conflict.
       </p>
@@ -43,7 +46,7 @@ const SECTIONS: LegalSection[] = [
     body: (
       <>
         <p>
-          When you opt in to text messages from EZOMOD or a business we serve, you agree to receive
+          When you opt in to text messages from Ezomod or a business we serve, you agree to receive
           recurring messages related to your inquiry, appointments, or account. Message frequency
           varies. Message and data rates may apply.
         </p>
@@ -58,7 +61,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Intellectual property",
     body: (
       <p>
-        The website, its content, and our underlying systems are owned by EZOMOD. Clients retain
+        The website, its content, and our underlying systems are owned by Ezomod. Clients retain
         ownership of their own data, including lead and customer records. Nothing in these terms
         transfers ownership of either party&apos;s intellectual property.
       </p>
@@ -68,7 +71,7 @@ const SECTIONS: LegalSection[] = [
     heading: "Limitation of liability",
     body: (
       <p>
-        To the fullest extent permitted by law, EZOMOD is not liable for indirect, incidental, or
+        To the fullest extent permitted by law, Ezomod is not liable for indirect, incidental, or
         consequential damages arising from use of the website or services. Our total liability for
         any claim is limited to the fees paid to us for the services in the three months before the
         claim arose.

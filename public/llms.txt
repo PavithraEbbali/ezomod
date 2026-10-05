@@ -1,0 +1,33 @@
+# Ezomod
+
+> Ezomod (also written EZOMOD) is an AI automation agency. We design, build and maintain AI systems that generate and follow up with leads, answer and make calls, run multi-step workflows with multiple AI agents, automate CRMs and business processes, and build fast websites. Website: https://www.ezomod.com
+
+Ezomod builds custom systems that work inside the tools a business already uses (for example its CRM), rather than selling another software subscription. We map the client's process first, build around it, test with their team, then monitor and improve the system after launch. We do not publish pricing; scope and timeline are agreed on a consultation call.
+
+## Services
+
+- [AI Lead Generation](https://www.ezomod.com/services/ai-lead-generation): finding and qualifying new prospects with AI.
+- [AI Lead Follow-Up & Speed-to-Lead](https://www.ezomod.com/services/ai-lead-follow-up): calling, texting and emailing every new lead within seconds and following up until they respond. Specialisation: real estate teams.
+- [AI Voice Agents & Call Automation](https://www.ezomod.com/services/ai-voice-agents): AI agents that make and answer phone calls, qualify callers and book appointments.
+- [Multi-Agent AI Workflow Development](https://www.ezomod.com/services/multi-agent-ai-workflows): systems where several AI agents each handle one part of a larger task.
+- [Business Process & AI Automation](https://www.ezomod.com/services/ai-automation): automating repetitive operational work.
+- [CRM Automation & Integration](https://www.ezomod.com/services/crm-automation): automating and connecting CRMs such as Follow Up Boss, Lofty, Salesforce and HubSpot.
+- [AI Chatbots & Customer Support Automation](https://www.ezomod.com/services/ai-chatbots): chat assistants for websites and messaging apps.
+- [Website Design & Development](https://www.ezomod.com/services/website-development): fast, search-friendly business websites.
+
+## Industries
+
+- [Real estate](https://www.ezomod.com/industries/real-estate)
+
+## Company
+
+- [About Ezomod](https://www.ezomod.com/about)
+- [FAQ](https://www.ezomod.com/faq)
+- [Book a consultation](https://www.ezomod.com/contact)
+- Email: Ezomodalltech@ezomod.com
+- LinkedIn: https://www.linkedin.com/company/ezomod/
+
+## Legal
+
+- [Privacy Policy](https://www.ezomod.com/privacy)
+- [Terms of Service](https://www.ezomod.com/terms)

@@ -126,8 +126,8 @@ export default function Differentiator() {
           {PILLARS.map((pillar, index) => (
             <motion.article
               key={pillar.title}
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={reduceMotion ? false : { y: 20 }}
+              whileInView={{ y: 0 }}
               whileHover={reduceMotion ? undefined : { y: -2, transition: { duration: 0.2 } }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}

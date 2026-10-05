@@ -56,8 +56,8 @@ export default function OperationalShift() {
           {STANDARDS.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={reduceMotion ? false : { y: 24 }}
+              whileInView={{ y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
               className="flex flex-col rounded-2xl border border-slate-200/80 bg-white p-6 shadow-sm transition-shadow hover:shadow-md sm:p-8"

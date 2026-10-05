@@ -17,7 +17,7 @@ export default function Hero() {
             first click to <span className="text-brand">closed deal.</span>
           </h1>
           <p className="lead mt-6 max-w-xl">
-            EZOMOD is an infrastructure agency for real estate teams. We design, build, and run
+            Ezomod is an infrastructure agency for real estate teams. We design, build, and run
             the systems that call, text, and email every new lead, follow up until they answer,
             and put qualified appointments on your team&apos;s calendar.
           </p>

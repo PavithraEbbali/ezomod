@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import { OG_IMAGE } from "@/lib/seo";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
@@ -12,50 +14,31 @@ const sora = Sora({
   display: "swap",
 });
 
-const DESCRIPTION =
-  "EZOMOD builds custom AI systems inside your existing CRM that call, text, and email every lead, follow up until they respond, and book appointments for your team.";
-
-/**
- * Absolute base for OG/Twitter asset URLs. Set NEXT_PUBLIC_SITE_URL once a custom
- * domain is attached; otherwise preview builds resolve against their own Vercel URL.
- */
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_ENV === "preview" && process.env.VERCEL_URL
-    ? `https://${process.env.VERCEL_URL}`
-    : "https://ezomod.vercel.app");
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
   title: {
-    default: "EZOMOD — Custom AI Lead Management Built Into Your CRM",
-    template: "%s · EZOMOD",
+    default: "Ezomod | AI Automation Agency for Leads, Agents & Workflows",
+    template: "%s | Ezomod",
   },
-  description: DESCRIPTION,
-  keywords: [
-    "AI lead follow-up",
-    "speed to lead",
-    "real estate lead management",
-    "AI voice calls",
-    "CRM automation",
-    "Follow Up Boss automation",
-  ],
+  description: SITE_DESCRIPTION,
   openGraph: {
-    title: "EZOMOD — AI systems that manage your leads from first click to closed deal",
-    description: DESCRIPTION,
-    url: SITE_URL,
-    siteName: "EZOMOD",
+    title: "Ezomod | AI Automation Agency",
+    description: SITE_DESCRIPTION,
+    siteName: SITE_NAME,
     type: "website",
-    images: [{ url: "/logo.png", width: 512, height: 512, alt: "EZOMOD" }],
+    locale: "en_US",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "EZOMOD — Custom AI Lead Management",
-    description: DESCRIPTION,
-    images: ["/logo.png"],
+    title: "Ezomod | AI Automation Agency",
+    description: SITE_DESCRIPTION,
+    images: [OG_IMAGE.url],
   },
-  icons: { icon: "/logo.png", apple: "/logo.png" },
-  robots: { index: true, follow: true },
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 };
 
 export const viewport: Viewport = {

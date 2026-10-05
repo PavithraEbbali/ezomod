@@ -1,18 +1,21 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import LegalDocument, { type LegalSection } from "@/components/LegalDocument";
 import { CONTACT_EMAIL, CONTACT_HREF } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "How EZOMOD collects, uses, and protects personal information, including SMS consent data.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Privacy Policy | Ezomod",
+  description:
+    "How Ezomod collects, uses and protects personal information, including SMS consent data, across our website and AI automation services.",
+  path: "/privacy",
+});
 
 const SECTIONS: LegalSection[] = [
   {
     heading: "Who we are",
     body: (
       <p>
-        EZOMOD (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) builds and operates lead
+        Ezomod (&ldquo;we,&rdquo; &ldquo;us,&rdquo; or &ldquo;our&rdquo;) builds and operates lead
         management and communication systems for businesses. This policy explains how we handle
         personal information collected through our website and through the systems we operate on
         behalf of our clients.

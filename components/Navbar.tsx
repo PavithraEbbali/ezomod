@@ -32,7 +32,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 z-50 w-full border-b border-[#00A3FF]/10 bg-white/80 backdrop-blur-md">
       <nav aria-label="Primary" className="container-x flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2.5">
+        <Link href="/" aria-label="Ezomod home" className="flex items-center gap-2.5">
           <Image
             src="/logo.png"
             alt=""

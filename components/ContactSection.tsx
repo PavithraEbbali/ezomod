@@ -4,7 +4,7 @@ import { CONTACT_EMAIL, CONTACT_HREF } from "@/lib/site";
 const AGENDA = [
   "A walkthrough of how your leads are handled today",
   "Where response time and follow-up are costing you deals",
-  "What we would build, how long it takes, and what it costs",
+  "What we would build, plus the timeline and scope",
 ] as const;
 
 const CONSULTATION_MAILTO = `${CONTACT_HREF}?subject=${encodeURIComponent(

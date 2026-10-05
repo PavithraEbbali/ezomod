@@ -104,7 +104,7 @@ function Connector({ index }: { index: number }) {
         {reduceMotion ? null : (
           <motion.span
             className={cn(bead, "top-0 -ml-[5px]")}
-            initial={{ left: "0%", opacity: 0 }}
+            initial={{ left: "0%" }}
             animate={{ left: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
             transition={timing}
           />
@@ -119,7 +119,7 @@ function Connector({ index }: { index: number }) {
         {reduceMotion ? null : (
           <motion.span
             className={cn(bead, "left-0 -mt-[5px]")}
-            initial={{ top: "0%", opacity: 0 }}
+            initial={{ top: "0%" }}
             animate={{ top: ["0%", "100%"], opacity: [0, 1, 1, 0] }}
             transition={timing}
           />

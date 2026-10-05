@@ -34,7 +34,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200/80 bg-[#F8FAFC] text-slate-600">
       <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="max-w-sm">
-          <Link href="/" className="flex items-center gap-2.5">
+          <Link href="/" aria-label="Ezomod home" className="flex items-center gap-2.5">
             <Image
               src="/logo.png"
               alt=""
@@ -83,7 +83,7 @@ export default function Footer() {
 
       <div className="border-t border-slate-200/80">
         <div className="container-x flex flex-col gap-2 py-6 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} EZOMOD. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Ezomod. All rights reserved.</p>
           <div className="flex gap-5">
             <Link href="/privacy" className="transition-colors duration-200 hover:text-[#007BFF]">
               Privacy
