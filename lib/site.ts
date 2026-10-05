@@ -7,7 +7,8 @@ export const SITE_DESCRIPTION =
 
 export const CONTACT_EMAIL = "Ezomodalltech@ezomod.com";
 export const CONTACT_HREF = `mailto:${CONTACT_EMAIL}`;
-export const CONSULTATION_HREF = "/#contact";
+export const CONSULTATION_HREF = "/contact";
+export const CTA_LABEL = "Book a free 30-minute call";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/company/ezomod/";
 

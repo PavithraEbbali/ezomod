@@ -11,10 +11,13 @@ export const metadata: Metadata = {
 
 const LINKS = [
   { label: "Home", href: "/" },
-  { label: "What we build", href: "/#services" },
-  { label: "How setup works", href: "/#setup-process" },
-  { label: "Privacy Policy", href: "/privacy" },
-  { label: "Terms of Service", href: "/terms" },
+  { label: "All services", href: "/services" },
+  { label: "AI lead follow-up", href: "/services/ai-lead-follow-up" },
+  { label: "Real estate", href: "/industries/real-estate" },
+  { label: "About Ezomod", href: "/about" },
+  { label: "FAQ", href: "/faq" },
+  { label: "Blog", href: "/blog" },
+  { label: "Book a consultation", href: "/contact" },
 ] as const;
 
 export default function NotFound() {

@@ -15,23 +15,23 @@ type Stage = {
 
 const STAGES: readonly Stage[] = [
   {
-    title: "Triggers & Ingestion",
+    title: "Where leads come from",
     icon: Webhook,
     iconClass: "bg-[#007BFF]/10 text-[#007BFF]",
-    items: ["Ad Platforms", "Property Portals", "Website Webhooks", "Direct API"],
+    items: ["Ad platforms", "Property portals", "Website forms", "Direct API"],
   },
   {
-    title: "Autonomous Orchestration",
+    title: "What the AI does",
     icon: BrainCircuit,
     iconClass: "bg-gradient-to-br from-[#007BFF] to-[#22C55E] text-white shadow-md shadow-[#0080FF]/25",
-    items: ["Neural Voice", "SMS Fallback", "WhatsApp Logic", "Email Dispatch"],
+    items: ["AI voice calls", "SMS follow-up", "WhatsApp messages", "Email"],
     engine: true,
   },
   {
-    title: "Synchronization",
+    title: "Where the results go",
     icon: DatabaseZap,
     iconClass: "bg-[#22C55E]/10 text-[#16A34A]",
-    items: ["Your CRM", "Team Calendars", "Analytics Dashboards", "Billing Engines"],
+    items: ["Your CRM", "Team calendars", "Reporting dashboards", "Billing systems"],
   },
 ];
 
@@ -134,10 +134,10 @@ export default function Integrations() {
     <section id="infrastructure" className="section border-y border-[#00A3FF]/10 bg-white/60">
       <div className="container-x">
         <div className="max-w-2xl">
-          <h2 className="h2">Universal Pipeline Integration</h2>
+          <h2 className="h2">Does it work with my lead sources and CRM?</h2>
           <p className="lead mt-4">
-            We ingest leads from any source, execute the omnichannel outreach, and seamlessly push
-            the structured data directly into your existing systems of record.
+            Yes. Ezomod takes in leads from any source, follows up by phone, text, WhatsApp and
+            email, and writes the results straight into the systems your team already uses.
           </p>
         </div>
 

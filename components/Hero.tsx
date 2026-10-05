@@ -1,6 +1,6 @@
 import HeroTelemetry from "@/components/HeroTelemetry";
 import ButtonLink from "@/components/ui/ButtonLink";
-import { CONSULTATION_HREF } from "@/lib/site";
+import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 
 export default function Hero() {
   return (
@@ -12,19 +12,20 @@ export default function Hero() {
 
       <div className="container-x grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
         <div>
-          <h1 className="font-display text-4xl font-bold leading-[1.1] tracking-tight text-[#0F172A] sm:text-5xl lg:text-[3.4rem]">
-            We build AI systems that <span className="text-brand">manage your leads</span> from
-            first click to <span className="text-brand">closed deal.</span>
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#007BFF]">AI automation agency</p>
+          <h1 className="mt-3 font-display text-4xl font-bold leading-[1.1] tracking-tight text-[#0F172A] sm:text-5xl lg:text-[3.4rem]">
+            AI automation for <span className="text-brand">more leads</span> and{" "}
+            <span className="text-brand">less busywork.</span>
           </h1>
           <p className="lead mt-6 max-w-xl">
-            Ezomod is an infrastructure agency for real estate teams. We design, build, and run
-            the systems that call, text, and email every new lead, follow up until they answer,
-            and put qualified appointments on your team&apos;s calendar.
+            Ezomod is an AI automation agency that designs, builds and maintains AI systems for lead
+            generation, instant lead follow-up, AI voice agents, multi-agent workflows, CRM
+            automation and websites, all inside the tools your team already uses.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <ButtonLink href={CONSULTATION_HREF}>Book a Consultation</ButtonLink>
-            <ButtonLink href="/#setup-process" variant="secondary">
-              View Setup Process
+            <ButtonLink href={CONSULTATION_HREF}>{CTA_LABEL}</ButtonLink>
+            <ButtonLink href="/services" variant="secondary">
+              Explore our services
             </ButtonLink>
           </div>
         </div>

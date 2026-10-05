@@ -1,19 +1,20 @@
 import ButtonLink from "@/components/ui/ButtonLink";
-import { CONTACT_EMAIL, CONTACT_HREF } from "@/lib/site";
+import { CONSULTATION_HREF, CONTACT_EMAIL, CONTACT_HREF, CTA_LABEL } from "@/lib/site";
 
 const AGENDA = [
-  "A walkthrough of how your leads are handled today",
-  "Where response time and follow-up are costing you deals",
+  "A walkthrough of how the work is handled today",
+  "Where time, leads or revenue are slipping through the cracks",
   "What we would build, plus the timeline and scope",
 ] as const;
 
-const CONSULTATION_MAILTO = `${CONTACT_HREF}?subject=${encodeURIComponent(
-  "Consultation request",
-)}&body=${encodeURIComponent(
-  "Name:\nCompany:\nCRM you use:\nApproximate leads per month:\nBest times to talk:\n",
-)}`;
-
-export default function ContactSection() {
+/** Closing call-to-action band used at the bottom of every page except /contact. */
+export default function ContactSection({
+  title = "Book a free consultation",
+  text = "A free 30-minute call with the people who would build your system. No sales script, no obligation.",
+}: {
+  title?: string;
+  text?: string;
+}) {
   return (
     <section id="contact" className="section">
       <div className="container-x">
@@ -24,22 +25,21 @@ export default function ContactSection() {
           />
           <div>
             <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl">
-              Book a consultation
+              {title}
             </h2>
             <p className="mt-4 max-w-xl text-base leading-relaxed text-white/75 sm:text-lg">
-              A 30-minute call with the people who would build your system. No sales script, no
-              obligation.
+              {text}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <ButtonLink href={CONSULTATION_MAILTO} variant="inverse">
-                Book a Consultation
+              <ButtonLink href={CONSULTATION_HREF} variant="inverse">
+                {CTA_LABEL}
               </ButtonLink>
               <ButtonLink
                 href={CONTACT_HREF}
                 variant="secondary"
                 className="border-white/25 bg-white/5 text-white hover:bg-white/10"
               >
-                Contact Us
+                Email us
               </ButtonLink>
             </div>
             <p className="mt-5 break-all text-sm text-white/60">{CONTACT_EMAIL}</p>

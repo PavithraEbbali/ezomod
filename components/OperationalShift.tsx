@@ -16,26 +16,26 @@ const STANDARDS: readonly Standard[] = [
   {
     icon: Activity,
     iconTone: "text-[#007BFF]",
-    label: "Sub-30-Second Omnichannel Dispatch",
-    title: "Instant Multi-Channel Interception",
-    text: "When an inquiry arrives from Meta Ads, Google LSA, or your website IDX, the system executes an immediate outbound touchpoint within thirty seconds—dialing via neural voice and deploying SMS/WhatsApp fallbacks if unanswered.",
-    specs: ["Speed: < 30s", "Channels: Voice, SMS, WhatsApp", "Availability: 24/7/365"],
+    label: "Response in under 30 seconds",
+    title: "Every new lead gets a call, text or email",
+    text: "When an inquiry arrives from Meta Ads, Google Local Services Ads or your IDX website, the system calls the lead within thirty seconds using a natural AI voice. If they don't answer, it follows up by SMS or WhatsApp.",
+    specs: ["Response: under 30 seconds", "Channels: Voice, SMS, WhatsApp", "Availability: 24/7/365"],
   },
   {
     icon: BadgeCheck,
     iconTone: "text-[#007BFF]",
-    label: "Conversational 4-Point Qualification",
-    title: "Localized Real Estate Due Diligence",
-    text: "The agent conducts a natural, human-grade voice conversation to verify purchasing power, financing status, move-in timelines, and target neighborhoods, while answering localized questions regarding HOA fees, tax rates, and recent comps.",
-    specs: ["Budget & Pre-Approval", "Timeline & Motivation", "Neighborhood & HOA Context"],
+    label: "Qualifies the lead on the call",
+    title: "Asks the questions your agents would ask",
+    text: "The AI agent has a natural conversation to check budget, financing, move-in timeline and preferred neighbourhoods, and answers local questions about HOA fees, tax rates and recent sales.",
+    specs: ["Budget and pre-approval", "Timeline and motivation", "Neighbourhood and HOA questions"],
   },
   {
     icon: DatabaseZap,
     iconTone: "text-[#22C55E]",
-    label: "Deterministic CRM Sync & Warm Handoff",
-    title: "Zero Data Loss & Native Calendar Booking",
-    text: "Complete verbatim call audio, conversational transcripts, sentiment scores, and structured buyer parameters are written directly into your existing CRM (Follow Up Boss, Lofty, Salesforce) before the call ends, locking private showings straight onto your team's calendar.",
-    specs: ["Instant CRM Telemetry", "Verbatim Audio & Transcript", "Direct Showing Lock-In"],
+    label: "Updates your CRM and books the showing",
+    title: "Every detail saved, showings booked",
+    text: "The call recording, transcript and the buyer's answers are saved to your existing CRM (Follow Up Boss, Lofty, Salesforce) before the call ends, and private showings are booked straight onto your team's calendar.",
+    specs: ["CRM updated automatically", "Call recording and transcript", "Showing booked on your calendar"],
   },
 ];
 
@@ -46,9 +46,9 @@ export default function OperationalShift() {
     <section className="section bg-slate-50/70">
       <div className="container-x">
         <div className="max-w-2xl">
-          <h2 className="h2">Core Operating Standards</h2>
+          <h2 className="h2">What happens when a new lead comes in?</h2>
           <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            The architectural standards our autonomous lead agents follow on every single inquiry.
+            Every inquiry goes through the same three steps, day or night, so no lead is missed.
           </p>
         </div>
 

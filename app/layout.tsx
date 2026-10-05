@@ -3,6 +3,7 @@ import { Inter, Sora } from "next/font/google";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { OG_IMAGE } from "@/lib/seo";
+import { SERVICES, servicePath } from "@/lib/services";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
@@ -51,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable}`}>
       <body>
-        <Navbar />
+        <Navbar services={SERVICES.map((s) => ({ href: servicePath(s.slug), name: s.name }))} />
         <main className="pt-16">{children}</main>
         <Footer />
       </body>

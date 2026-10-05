@@ -113,12 +113,12 @@ export default function Differentiator() {
       <div className="container-x">
         <div className="max-w-3xl">
           <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            Not another tool for your team to manage.
+            Why choose Ezomod?
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
-            We don&apos;t sell you another software subscription to manage. We build custom
-            autonomous infrastructure that lives entirely inside your existing CRM, handling
-            calls, texts, and emails so your team doesn&apos;t have to.
+            Because Ezomod isn&apos;t another tool for your team to manage. We don&apos;t sell software subscriptions. We build custom
+            AI systems that work inside the tools you already use, such as your CRM, inbox and
+            phone system, and we keep them running so your team doesn&apos;t have to.
           </p>
         </div>
 

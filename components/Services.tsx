@@ -181,10 +181,10 @@ function SupportMicroUI() {
 
 export default function Services() {
   return (
-    <section id="services" className="section">
+    <section id="features" className="section">
       <div className="container-x">
         <div className="max-w-2xl">
-          <h2 className="h2">What we build for you</h2>
+          <h2 className="h2">What does the AI lead follow-up system do?</h2>
           <p className="lead mt-4">
             One system that covers the whole lead lifecycle, from the first inquiry to the client
             relationship after the contract is signed.

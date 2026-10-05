@@ -1,21 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CONTACT_EMAIL, CONTACT_HREF } from "@/lib/site";
+import { SERVICES, servicePath } from "@/lib/services";
+import { CONTACT_EMAIL, CONTACT_HREF, LINKEDIN_URL } from "@/lib/site";
 
 const COLUMNS = [
   {
     title: "Services",
-    links: [
-      { label: "What we build", href: "/#services" },
-      { label: "Setup process", href: "/#setup-process" },
-      { label: "Infrastructure", href: "/#infrastructure" },
-    ],
+    links: SERVICES.map((service) => ({ label: service.name, href: servicePath(service.slug) })),
   },
   {
     title: "Company",
     links: [
-      { label: "Book a consultation", href: "/#contact" },
-      { label: "Contact Us", href: CONTACT_HREF },
+      { label: "About Ezomod", href: "/about" },
+      { label: "Real estate", href: "/industries/real-estate" },
+      { label: "Blog", href: "/blog" },
+      { label: "FAQ", href: "/faq" },
+      { label: "Book a consultation", href: "/contact" },
     ],
   },
   {
@@ -25,31 +25,24 @@ const COLUMNS = [
       { label: "Terms of Service", href: "/terms" },
     ],
   },
-] as const;
+];
 
 const LINK_CLASS = "text-sm text-slate-600 transition-colors duration-200 hover:text-[#007BFF]";
 
 export default function Footer() {
   return (
     <footer className="border-t border-slate-200/80 bg-[#F8FAFC] text-slate-600">
-      <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+      <div className="container-x grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.3fr_1.3fr_1fr_1fr]">
         <div className="max-w-sm">
           <Link href="/" aria-label="Ezomod home" className="flex items-center gap-2.5">
-            <Image
-              src="/logo.png"
-              alt=""
-              width={512}
-              height={512}
-              sizes="32px"
-              className="h-8 w-8 rounded-md object-contain"
-            />
+            <Image src="/logo.png" alt="" width={512} height={512} sizes="32px" className="h-8 w-8 rounded-md object-contain" />
             <span className="font-display text-lg font-bold tracking-tight text-[#0F172A]">
-            EZO<span className="text-brand">MOD</span>
-          </span>
+              EZO<span className="text-brand">MOD</span>
+            </span>
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            We build AI systems inside your CRM that call, text, and email your leads, follow up
-            until they respond, and hand your team booked appointments.
+            Ezomod is an AI automation agency. We build AI lead generation, lead follow-up, voice
+            agents, multi-agent workflows, CRM automation, chatbots and websites.
           </p>
           <a
             href={CONTACT_HREF}
@@ -57,6 +50,11 @@ export default function Footer() {
           >
             {CONTACT_EMAIL}
           </a>
+          <p className="mt-2">
+            <a href={LINKEDIN_URL} rel="noopener" className={LINK_CLASS}>
+              Ezomod on LinkedIn
+            </a>
+          </p>
         </div>
 
         {COLUMNS.map((column) => (
@@ -64,16 +62,10 @@ export default function Footer() {
             <h2 className="text-sm font-semibold text-[#0F172A]">{column.title}</h2>
             <ul className="mt-4 space-y-3">
               {column.links.map((link) => (
-                <li key={link.label}>
-                  {link.href.startsWith("mailto:") ? (
-                    <a href={link.href} className={LINK_CLASS}>
-                      {link.label}
-                    </a>
-                  ) : (
-                    <Link href={link.href} className={LINK_CLASS}>
-                      {link.label}
-                    </Link>
-                  )}
+                <li key={link.href}>
+                  <Link href={link.href} className={LINK_CLASS}>
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>

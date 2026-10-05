@@ -14,7 +14,7 @@ type Node = { time: string; title?: string; inline?: boolean; active?: boolean; 
 const NODES: readonly Node[] = [
   {
     time: "00:00:15",
-    title: "Outbound Neural Dial",
+    title: "Calling the new lead",
     inline: true,
     body: (
       <span aria-hidden className="flex h-3.5 items-center gap-[2px]">
@@ -30,7 +30,7 @@ const NODES: readonly Node[] = [
   },
   {
     time: "00:02:45",
-    title: "Entity Extraction & Qualification",
+    title: "Qualifying budget & timeline",
     body: (
       <span className="flex flex-wrap gap-1">
         {TAGS.map((tag) => (
@@ -50,7 +50,7 @@ const NODES: readonly Node[] = [
     body: (
       <span className="inline-flex items-center gap-2 rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-medium leading-none text-white">
         <Check className="h-3.5 w-3.5 text-[#22C55E]" strokeWidth={3} aria-hidden />
-        Calendar Showing Locked
+        Showing booked on calendar
       </span>
     ),
   },

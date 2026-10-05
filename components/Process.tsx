@@ -2,7 +2,9 @@
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
 
-const STEPS = [
+export type Step = { title: string; text: string };
+
+const DEFAULT_STEPS: readonly Step[] = [
   {
     title: "Consultation",
     text: "We review your lead sources, CRM, pipeline stages, and how your team currently follows up. You get a clear written scope and timeline.",
@@ -19,10 +21,11 @@ const STEPS = [
     title: "Launch and ongoing support",
     text: "We go live across all lead sources, review results with you each month, and keep tuning scripts and timing as your business changes.",
   },
-] as const;
+];
 
 /** Gradient stops at each node, so the laser reads as one continuous #007BFF → #22C55E sweep. */
-const STOPS = ["#007BFF", "#00A3FF", "#12B89A", "#22C55E"] as const;
+const STOPS_4 = ["#007BFF", "#00A3FF", "#12B89A", "#22C55E"] as const;
+const STOPS_5 = ["#007BFF", "#00A3FF", "#0AB2C4", "#16BC86", "#22C55E"] as const;
 
 /** Seconds the laser takes to travel between two adjacent nodes. */
 const SEGMENT = 0.55;
@@ -50,17 +53,27 @@ const nodeCore: Variants = {
   lit: (i: number) => ({ scale: 1, transition: { delay: i * SEGMENT, duration: 0.3 } }),
 };
 
-export default function Process() {
+export default function Process({
+  steps = DEFAULT_STEPS,
+  title = "How setup works",
+  intro = "Most teams are live within a few weeks. We do the technical work; your team reviews and approves each stage.",
+  id = "setup-process",
+}: {
+  steps?: readonly Step[];
+  title?: string;
+  intro?: string;
+  id?: string;
+}) {
   const reduceMotion = useReducedMotion();
+  const STOPS: readonly string[] = steps.length > 4 ? STOPS_5 : STOPS_4;
 
   return (
-    <section id="setup-process" className="section border-y border-[#00A3FF]/10 bg-white/60">
+    <section id={id} className="section border-y border-[#00A3FF]/10 bg-white/60">
       <div className="container-x">
         <div className="max-w-2xl">
-          <h2 className="h2">How setup works</h2>
+          <h2 className="h2">{title}</h2>
           <p className="lead mt-4">
-            Most teams are live within a few weeks. We do the technical work; your team reviews and
-            approves each stage.
+            {intro}
           </p>
         </div>
 
@@ -70,8 +83,8 @@ export default function Process() {
           viewport={{ once: true, amount: 0.4 }}
           className="mt-14 flex flex-col md:flex-row"
         >
-          {STEPS.map((step, index) => {
-            const hasNext = index < STEPS.length - 1;
+          {steps.map((step, index) => {
+            const hasNext = index < steps.length - 1;
             const [from, to] = [STOPS[index], STOPS[index + 1] ?? STOPS[index]];
 
             return (
