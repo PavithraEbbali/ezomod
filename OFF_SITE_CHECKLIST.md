@@ -2,7 +2,21 @@
 
 Things you need to do yourself, outside the code. Do them in order. Each step says where to click and what to copy.
 
-> **Important:** this code repository is public. Never paste API keys or secret keys into any file in the project. Keys only go into the Cloudflare dashboard, as described below.
+> **Important:** this code repository is public. Never paste API keys or secret keys into any file in the project. Keys only go into the Cloudflare Pages dashboard, as described below.
+
+> 🚨 **DNS rules (company email depends on these)**
+> - DNS for ezomod.com stays at **GoDaddy**. **Never change the nameservers.** If any service (Cloudflare, Resend, Google, AWS…) offers to "use our nameservers" or "add this site to Cloudflare", decline.
+> - **Never edit or delete** the existing `MX` records (Zoho), the root `TXT @` SPF record (`v=spf1 include:zoho.in ~all`) or the `TXT _dmarc` record. Company email on Zoho broke once when these were lost.
+> - New records are only ever **added** at **GoDaddy › My Products › ezomod.com › DNS › Add New Record**. In GoDaddy's **Name** field, type only the part before `.ezomod.com` (for example `send`, not `send.ezomod.com`).
+> - After any DNS change, check email still works: send yourself a message from Gmail to Ezomodalltech@ezomod.com and reply to it.
+
+## ✅ Already done (2026-10-05)
+
+- New site live on **https://www.ezomod.com** (Cloudflare Pages project `ezomod`, connected by the `www` CNAME at GoDaddy).
+- `robots.txt` is the site's own file (Cloudflare's managed robots.txt is off); sitemap.xml, llms.txt, og-image.png and structured data verified live.
+- Old Vercel project deleted; `ezomod.vercel.app` returns "DEPLOYMENT_NOT_FOUND".
+- `ezomod.com` → `https://www.ezomod.com` redirect via **GoDaddy Forwarding** (Permanent 301, masking off). Known limit: GoDaddy forwards only the home page, so `ezomod.com/faq` shows "Not Found". That's accepted: every link, the sitemap and the canonical tags use `www`.
+- `seo-overhaul` merged into `main`.
 
 ---
 
@@ -10,15 +24,37 @@ Things you need to do yourself, outside the code. Do them in order. Each step sa
 
 ### A1. Resend (sends the contact form emails to you)
 
+**What Resend adds to your DNS.** Resend's standard setup needs **3 new records, all on subdomains**. None of them touch the root (`@`) MX, SPF or DMARC:
+
+| # | Type | GoDaddy "Name" | Value (copy the exact value Resend shows you) | Priority | Why |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **TXT** | `resend._domainkey` | a long key starting `p=MIGfMA0...` | – | DKIM signature, so receivers trust the emails |
+| 2 | **MX** | `send` | `feedback-smtp.<region>.amazonses.com` (e.g. `feedback-smtp.ap-northeast-1.amazonses.com`) | `10` | bounce handling for the `send.ezomod.com` return address only |
+| 3 | **TXT** | `send` | `v=spf1 include:amazonses.com ~all` | – | SPF for `send.ezomod.com` only |
+
+- Record 2 is an MX on **`send`**, not on `@`. Your Zoho MX records on `@` stay exactly as they are, and mail to Ezomodalltech@ezomod.com keeps going to Zoho.
+- Record 3 is an SPF on **`send`**, not on `@`. The root SPF `v=spf1 include:zoho.in ~all` is **not edited**.
+- Your existing DMARC (`adkim=r; aspf=r`) already accepts Resend's signed mail, so **don't add a second `_dmarc` record** even if Resend suggests one.
+- 🛑 **Stop and ask us** if Resend shows any record with Name `@` (or blank), asks you to edit the existing SPF, or asks to change nameservers. Also leave Resend's **Receiving / Inbound** feature **off**; it would need an MX record that conflicts with Zoho.
+
+**Steps**
+
 1. Go to **resend.com** and sign up (the free plan is enough to start).
-2. In Resend, open **Domains** and click **Add Domain**. Type `ezomod.com` and choose a region close to you.
-3. Resend now shows a few **DNS records** (usually one MX record and two TXT records, for SPF and DKIM). Keep this page open.
-4. In a new tab, log in to **Cloudflare** and click your domain **ezomod.com**, then **DNS** › **Records**.
-5. For each record Resend shows, click **Add record** in Cloudflare and copy the **Type**, **Name** and **Value/Content** exactly. For the MX record, also copy the **Priority**. Leave **Proxy status** as **DNS only** (grey cloud).
-6. Back in Resend, click **Verify DNS Records**. It can take a few minutes, sometimes up to an hour. Wait until the domain shows **Verified**.
-7. In Resend, open **API Keys** › **Create API Key**. Name it `ezomod-website`, give it **Sending access**, and limit it to the `ezomod.com` domain. Click **Add**.
-8. **Copy the key now.** It starts with `re_` and is shown only once. You will paste it in step A4.
-9. Decide on the sender address the emails will come from, for example `website@ezomod.com`. You don't need a mailbox for it; it only has to be on the verified domain.
+2. In Resend, open **Domains** › **Add Domain**. Type `ezomod.com`, choose a region (for example **Tokyo, ap-northeast-1**, the closest to India), and click **Add**.
+3. Resend shows the DNS records. Check they match the 3 rows in the table above (only the key and region text differ). Keep this page open.
+4. In a new tab, log in to **GoDaddy** › **My Products** › next to ezomod.com click **DNS** › **Add New Record**. Add each of the 3 records:
+   - **Type:** as in the table
+   - **Name:** `resend._domainkey` or `send` (not the full name)
+   - **Value:** paste from Resend
+   - **Priority:** `10` for the MX record
+   - **TTL:** default (1 hour)
+   - Click **Save** after each one.
+5. Do **not** click on, edit or delete any existing row while you're there.
+6. Back in Resend, click **Verify DNS Records**. It can take from a few minutes up to an hour. Wait until the domain shows **Verified**.
+7. Check email still works (see the DNS rules at the top).
+8. In Resend, open **API Keys** › **Create API Key**. Name it `ezomod-website`, give it **Sending access**, and limit it to the `ezomod.com` domain. Click **Add**.
+9. **Copy the key now.** It starts with `re_` and is shown only once. You will paste it in step A4.
+10. The sender address will be `website@ezomod.com`. No mailbox is needed for it: it only sends, and replies go to the visitor because the form sets Reply-To.
 
 ### A2. Cloudflare Turnstile (stops spam bots, no annoying puzzles)
 
@@ -75,7 +111,7 @@ Things you need to do yourself, outside the code. Do them in order. Each step sa
 3. Choose the **HTML tag** method. Google shows a tag like `<meta name="google-site-verification" content="abc123..." />`.
 4. Copy **only the content value** (the `abc123...` part). Paste it into `NEXT_PUBLIC_GSC_VERIFICATION` (step A4) and redeploy.
 5. When the deploy has finished, go back to Search Console and click **Verify**.
-6. Tip: the **Domain** property type (verified with a DNS TXT record in Cloudflare) covers `www` and non-`www` together. You can add it as well; the meta tag isn't needed for that one.
+6. Use only the **URL prefix** property with the meta tag as above. Don't add a **Domain** property: it needs a new TXT record on `@`, right next to your SPF record, and it isn't needed because the site lives on `www` only.
 
 ### A7. Test everything after deploying
 
@@ -85,67 +121,42 @@ Things you need to do yourself, outside the code. Do them in order. Each step sa
 4. If you see an error instead, check the logs: Cloudflare › your Pages project › **Functions** › **Real-time logs**, then send the form again. A "not configured" message means a variable from step A4 is missing or misspelled.
 5. In GA4, open **Reports** › **Realtime** while you click a booking button. You should see a `booking_click` event.
 
+### A8. Add the missing Zoho DKIM record (protects company email)
+
+Your company email has SPF and DMARC but **no DKIM signature**. Because DMARC is set to quarantine, some of your outgoing emails may land in spam. Adding DKIM fixes that. It is a **new** record and doesn't change any existing one.
+
+1. Sign in to **mailadmin.zoho.in** (Zoho Mail Admin Console) with the admin account.
+2. Go to **Domains** › click **ezomod.com** › **Email Configuration** › **DKIM** (in some versions: **Mail Administration** › **Domains** › ezomod.com › **DKIM**).
+3. Click **Add**, enter the selector `zmail`, choose key size **2048** if offered (otherwise 1024), and click **Add**.
+4. Zoho shows a **TXT** record. Its host name looks like `zmail._domainkey`, and its value starts with `v=DKIM1; k=rsa; p=...`. Copy the value.
+5. In **GoDaddy** › ezomod.com › **DNS** › **Add New Record**:
+   - **Type:** `TXT`
+   - **Name:** `zmail._domainkey`
+   - **Value:** paste the Zoho value exactly
+   - **TTL:** 1 hour
+   - Click **Save**. Don't touch any other row.
+6. Wait about 30–60 minutes. Then in Zoho click **Verify** next to the DKIM selector. When it shows **Verified**, switch DKIM **on** for the domain if Zoho asks.
+7. Test: send an email from Ezomodalltech@ezomod.com to a Gmail address. In Gmail, open it › **⋮** › **Show original**. You should see **DKIM: PASS**, **SPF: PASS** and **DMARC: PASS**.
+
 ---
 
-## Part B: Launch
+## Part B: Launch checks
 
-### B1. Cloudflare settings (do these before merging)
+✅ Done already: the site is live on www, the old Vercel copy is deleted, the apex redirect is set up through GoDaddy Forwarding, and the branch is merged. (Website settings on Cloudflare's own DNS, like Redirect Rules and Bot settings, don't apply here, because DNS stays at GoDaddy.)
 
-**Let AI search engines and search crawlers read the site**
+### B1. Check the live site
 
-1. In Cloudflare, click **ezomod.com**, then **Security** › **Bots** (in some accounts: **Security** › **Settings** › **Bot traffic**).
-2. Find **Block AI bots** (also called **AI Scrapers and Crawlers**) and set it to **Off** / **Do not block**. If it's on, ChatGPT, Claude and Perplexity can't read the site and won't mention it.
-3. Find **Manage your robots.txt** (also called **Instruct AI bot traffic with robots.txt** or **Content Signals**) and turn it **Off**. The site already has its own robots.txt that welcomes these crawlers, and Cloudflare's version would replace it.
-4. Check **Bot Fight Mode**:
-   - On the free plan, leave it **Off**. It can challenge legitimate crawlers.
-   - On **Super Bot Fight Mode** (paid plans), make sure **Verified bots** is set to **Allow**, and **Definitely automated** is not set to **Block** for verified bots.
-5. Go to **Security** › **Events**. Over the next few days, filter by user agent `Googlebot` and `Bingbot`. You should see no blocks or challenges. If you do, tell us.
+1. **Rich Results Test:** go to **search.google.com/test/rich-results**. Test the home page, `/faq` and `/services/ai-voice-agents`. You should see **FAQ**, **Breadcrumbs** and **Organization** detected, with no errors. Warnings about optional fields are fine.
+2. **Schema validator:** paste the same addresses into **validator.schema.org**. There should be no errors.
+3. **PageSpeed Insights:** go to **pagespeed.web.dev**, test the home page, `/services/ai-voice-agents` and `/contact`, and look at the **Mobile** tab. The "Core Web Vitals" field data appears once enough real visitors have come (often after a few weeks).
+4. **LinkedIn preview:** go to **linkedin.com/post-inspector**, enter `https://www.ezomod.com` and click **Inspect**. You should see the dark Ezomod image, the title and the description. This also clears LinkedIn's old cached preview.
+5. **WhatsApp preview:** send `https://www.ezomod.com` to yourself on WhatsApp. The same image and title should appear. WhatsApp caches previews, so if you see the old one, add `?v=2` to the end of the link.
+6. After Part A is set up, do the full contact form and booking test from **A7**.
 
-**Send everyone to `www.ezomod.com`**
+### B2. Keep the GoDaddy forwarding as it is
 
-6. Go to **Workers & Pages** › your Pages project › **Custom domains**. Make sure **both** `www.ezomod.com` and `ezomod.com` are listed and **Active**. Add any that are missing with **Set up a custom domain**.
-7. Go back to **ezomod.com** › **Rules** › **Redirect Rules** › **Create rule** › choose the template **Redirect from Root to WWW**.
-   - It redirects `ezomod.com/*` to `https://www.ezomod.com/${1}` with status **301** and **Preserve query string** ticked.
-   - Click **Deploy**.
-8. Go to **SSL/TLS** › **Edge Certificates** and turn on **Always Use HTTPS**.
-
-**Check the address variations (after the site is live, B3)**
-
-9. Open each address in your browser. Each one should end up on the address after the arrow, and the address bar should change:
-   - `http://ezomod.com` → `https://www.ezomod.com/`
-   - `https://ezomod.com/privacy` → `https://www.ezomod.com/privacy`
-   - `https://www.ezomod.com/privacy.html` → `https://www.ezomod.com/privacy`
-   - `https://www.ezomod.com/privacy/` → `https://www.ezomod.com/privacy`
-   - `https://www.ezomod.com/book` → `https://www.ezomod.com/contact`
-10. If `/privacy.html` or `/privacy/` does **not** redirect, tell us. We'll add explicit rules, but Cloudflare Pages normally does this automatically.
-
-### B2. Take down the old copy on `ezomod.vercel.app`
-
-A second copy of the site on another address splits your Google ranking. Do this **after** the Cloudflare site is live (B3), so there's never a moment with no site.
-
-1. Log in to **vercel.com** and open the **ezomod** project.
-2. **Recommended:** delete the project. Go to **Settings** › **General**, scroll to **Delete Project**, and confirm. The `ezomod.vercel.app` address then stops working.
-3. **If you'd rather keep it:** go to **Settings** › **Deployment Protection** and turn on **Vercel Authentication** for **All deployments** (including production). Visitors and search engines then get a login screen instead of a duplicate site.
-4. Check: open `https://ezomod.vercel.app` in a private window. It should show an error or a login screen, not the website.
-5. Search Google for `site:ezomod.vercel.app` once a week. Old results disappear on their own within a few weeks.
-
-### B3. Merge `seo-overhaul` into `main` and check the live site
-
-1. On **github.com**, open the repository and click **Pull requests** › **New pull request**.
-2. Set **base: main** and **compare: seo-overhaul**. Click **Create pull request**, then **Merge pull request** › **Confirm merge**.
-3. In Cloudflare › **Workers & Pages** › your project › **Deployments**, wait for the new build to show **Success** (a few minutes). If it fails, open it and send us the log.
-4. Open these and check they load:
-   - `https://www.ezomod.com/`
-   - `https://www.ezomod.com/robots.txt`
-   - `https://www.ezomod.com/sitemap.xml`
-   - `https://www.ezomod.com/llms.txt`
-   - `https://www.ezomod.com/og-image.png`
-5. **Rich Results Test:** go to **search.google.com/test/rich-results**. Test the home page, `/faq` and `/services/ai-voice-agents`. You should see **FAQ**, **Breadcrumbs** and **Organization** detected, with no errors. Warnings about optional fields are fine.
-6. **Schema validator:** paste the same addresses into **validator.schema.org**. There should be no errors.
-7. **PageSpeed Insights:** go to **pagespeed.web.dev**, test the home page, `/services/ai-voice-agents` and `/contact`, and look at the **Mobile** tab. The "Core Web Vitals" field data appears once enough real visitors have come (often after a few weeks).
-8. **LinkedIn preview:** go to **linkedin.com/post-inspector**, enter `https://www.ezomod.com` and click **Inspect**. You should see the dark Ezomod image, the title and the description. This also clears LinkedIn's old cached preview.
-9. **WhatsApp preview:** send `https://www.ezomod.com` to yourself on WhatsApp. The same image and title should appear. WhatsApp caches previews, so if you see the old one, add `?v=2` to the end of the link.
-10. Do the full contact form and booking test from **A7**.
+- Don't add forwarding on the **Subdomains** row for `www`. It would overwrite the `www` CNAME and take the site down.
+- If the forwarding ever has to be redone, the target must read exactly `https://www.ezomod.com`, Permanent (301), masking **off**.
 
 ---
 
@@ -167,10 +178,9 @@ A second copy of the site on another address splits your Google ranking. Do this
 
 1. Go to **bing.com/webmasters** and sign in with a Microsoft account.
 2. Choose **Import from Google Search Console** and allow access. This verifies the site and brings in your sitemap in one step.
-   - If import isn't offered: click **Add site**, enter `https://www.ezomod.com`, and verify with the **DNS (CNAME)** option. Bing gives you a record to add in Cloudflare › **DNS**.
+   - If import isn't offered: click **Add site**, enter `https://www.ezomod.com`, and choose the **HTML Meta Tag** option. Send us the tag and we'll add it to the site (no DNS change needed).
 3. Open **Sitemaps** and make sure `https://www.ezomod.com/sitemap.xml` is listed. If not, click **Submit sitemap** and add it.
 4. Open **URL Submission** and submit the same five main pages as in C1.
-5. Optional: under **Settings** › **IndexNow**, Cloudflare can notify Bing automatically when pages change. In Cloudflare, go to **Caching** › **Configuration** › **Crawler Hints** and turn it **On**.
 
 ### C3. Google Business Profile
 
