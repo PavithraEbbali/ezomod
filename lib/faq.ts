@@ -31,7 +31,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Where is Ezomod based?",
-        a: "Ezomod is based in {{TODO: city, country}} and works with clients remotely. Consultations, setup and support all happen online, so we can work with businesses in different locations and time zones.",
+        a: "Ezomod is based in Mysuru, Karnataka, India, and works with clients remotely. Consultations, setup and support all happen online, so we can work with businesses in different locations and time zones.",
       },
     ],
   },
@@ -93,7 +93,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "Which industries does Ezomod work with?",
-        a: "Ezomod's lead follow-up service is specialised for real estate teams and brokerages. Our automation, AI agent, chatbot and website services work for most industries, including professional services, home services, e-commerce, healthcare administration, agencies and SaaS.",
+        a: "Ezomod's lead follow-up service is specialised for real estate teams and brokerages. Our automation, AI agent, chatbot and website services work for most industries, including professional services, home services, e-commerce, agencies and SaaS.",
       },
     ],
   },
@@ -106,7 +106,7 @@ export const FAQ_GROUPS: FaqGroup[] = [
       },
       {
         q: "How does Ezomod handle data security?",
-        a: "We build inside your own accounts wherever possible and give each part of the system only the access it needs. Data handling and the AI providers involved are discussed and agreed with you before we build. {{TODO: add any specific security practices or certifications}}",
+        a: "We build inside your own accounts wherever possible and give each part of the system only the access it needs. Data handling and the AI providers involved are discussed and agreed with you before we build.",
       },
       {
         q: "Are calls recorded?",

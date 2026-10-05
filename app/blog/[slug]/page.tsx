@@ -29,7 +29,22 @@ const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
 
 function BlockView({ block }: { block: Block }) {
-  if (block.type === "p") return <p>{block.text}</p>;
+  if (block.type === "p")
+    return (
+      <p>
+        {block.text}
+        {block.cite ? (
+          <>
+            {" "}
+            Source:{" "}
+            <a href={block.cite.href} rel="noopener" className="font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]">
+              {block.cite.label}
+            </a>
+            .
+          </>
+        ) : null}
+      </p>
+    );
   if (block.type === "ul")
     return (
       <ul className="list-disc space-y-2 pl-5">

@@ -113,8 +113,8 @@ export default function Page() {
               entry.
             </p>
             <p>
-              Real estate is where Ezomod started. Our lead follow-up system was built around how
-              teams actually work: leads from portals and ads, agents who are out at showings, and
+              Real estate is where our lead follow-up work is most specialised. The system is built
+              around how teams actually work: leads from portals and ads, agents who are out at showings, and
               CRMs like Follow Up Boss and Lofty that need to stay accurate. The rest of our
               services, from{" "}
               <Link href="/services/ai-voice-agents" className={LINK}>AI voice agents</Link> to{" "}

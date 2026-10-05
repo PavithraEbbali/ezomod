@@ -14,8 +14,8 @@ import {
 /**
  * JSON-LD builders. Every entity links back to one Organization via @id.
  *
- * Rule: no placeholder values. Fields we don't have real data for (founder, address, phone,
- * areaServed, extra sameAs profiles) are omitted, not filled with {{TODO}}. See TODO_CONTENT.md.
+ * Rule: no placeholder values. Fields we don't have real data for (street address, phone,
+ * areaServed, extra sameAs profiles) are omitted, not filled with placeholders. See TODO_CONTENT.md.
  */
 
 export type JsonLdObject = Record<string, unknown>;
@@ -44,6 +44,11 @@ const KNOWS_ABOUT = [
   "Real estate lead management",
 ];
 
+const FOUNDER = { "@type": "Person", name: "Gowrav K M", jobTitle: "Founder" };
+const FOUNDING_DATE = "2026";
+/** City-level address only (no street address or phone published). */
+const ADDRESS = { "@type": "PostalAddress", addressLocality: "Mysuru", addressRegion: "Karnataka", addressCountry: "IN" };
+
 const ref = (id: string) => ({ "@id": id });
 
 const hasTodo = (text: string) => text.includes("{{TODO");
@@ -62,6 +67,9 @@ export function organization(): JsonLdObject {
     email: CONTACT_EMAIL,
     sameAs: SAME_AS,
     knowsAbout: KNOWS_ABOUT,
+    founder: FOUNDER,
+    foundingDate: FOUNDING_DATE,
+    address: ADDRESS,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "sales",
@@ -98,6 +106,9 @@ export function professionalService(): JsonLdObject {
     logo: LOGO_URL,
     description: SITE_DESCRIPTION,
     email: CONTACT_EMAIL,
+    founder: FOUNDER,
+    foundingDate: FOUNDING_DATE,
+    address: ADDRESS,
     parentOrganization: ref(ORG_ID),
     knowsAbout: KNOWS_ABOUT,
     hasOfferCatalog: {
@@ -198,8 +209,7 @@ export function blogPosting(post: Post, words: number): JsonLdObject {
     inLanguage: "en",
     wordCount: words,
     keywords: post.primaryKeyword,
-    // Author is only included once a real name replaces the placeholder.
-    ...(hasTodo(post.author) ? {} : { author: { "@type": "Person", name: post.author } }),
+    author: ref(ORG_ID),
     publisher: ref(ORG_ID),
     isPartOf: ref(WEBSITE_ID),
   };

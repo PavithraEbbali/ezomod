@@ -159,7 +159,7 @@ export const SERVICES_A: Service[] = [
     intro: [
       "Most businesses lose leads in the gap between the inquiry and the first conversation. A lead fills in a form at night or on a weekend, nobody calls for hours, and by then they have spoken to someone else. \"Speed to lead\" is simply how fast you make that first contact.",
       "Ezomod builds AI lead follow-up systems that close that gap. When an inquiry arrives from your ads, property portals or website, the system places a call within about thirty seconds, sends a text and email if there is no answer, and keeps following up on a schedule. On the call it asks your qualification questions, answers common questions, and books the appointment on your team's calendar.",
-      "Everything runs inside the CRM your team already uses, such as Follow Up Boss, Lofty or Salesforce. Notes, tags, recordings and appointments land on the contact record, so there is no new dashboard to learn. This service started with real estate teams, and that is still where it is most specialised.",
+      "Everything runs inside the CRM your team already uses, such as Follow Up Boss, Lofty or Salesforce. Notes, tags, recordings and appointments land on the contact record, so there is no new dashboard to learn. Real estate is where our lead follow-up work is most specialised.",
     ],
     whoFor: [
       "Real estate teams and brokerages handling online buyer and seller leads",
@@ -233,7 +233,7 @@ export const SERVICES_A: Service[] = [
     tools: ["Follow Up Boss", "Lofty", "Salesforce", "Other CRMs with an API", "Meta Ads and Google Local Services Ads", "Property portals and IDX website forms", "Phone, SMS, WhatsApp and email", "Google and Outlook calendars"],
     toolsNote:
       "If your CRM or lead source is not listed, ask us. Most systems can be connected through their API or a webhook.",
-    industries: ["Real estate teams and brokerages", "Mortgage and lending", "Home services", "Insurance", "Any business that buys leads from ads or portals"],
+    industries: ["Real estate teams and brokerages", "Home services", "Any business that buys leads from ads or portals"],
     faqs: [
       {
         q: "What does speed to lead mean?",
@@ -296,7 +296,7 @@ export const SERVICES_A: Service[] = [
     whoFor: [
       "Businesses that miss calls outside office hours or during busy periods",
       "Sales teams that need to call new leads quickly and consistently",
-      "Clinics, agencies and service businesses that book appointments by phone",
+      "Agencies and service businesses that book appointments by phone",
       "Real estate teams qualifying buyer and seller inquiries",
       "Operations teams making repetitive reminder or confirmation calls",
     ],
@@ -369,7 +369,7 @@ export const SERVICES_A: Service[] = [
     tools: ["Telephony and SIP providers", "Voice AI and speech-to-text models", "Large language models (LLMs)", "Google and Outlook calendars", "Follow Up Boss, Lofty, Salesforce, HubSpot and other CRMs", "SMS and WhatsApp for follow-up"],
     toolsNote:
       "We choose voice and telephony providers based on your country, call volume, languages and quality needs.",
-    industries: ["Real estate", "Healthcare and clinics", "Home services", "Professional services", "Hospitality", "Insurance and finance"],
+    industries: ["Real estate", "Home services", "Professional services", "Hospitality"],
     faqs: [
       {
         q: "What does an AI voice agent do?",
@@ -501,7 +501,7 @@ export const SERVICES_A: Service[] = [
     tools: ["Large language models (LLMs) from leading AI providers", "Agent frameworks and orchestration tools", "Your CRM, email and calendar", "Google Drive, SharePoint and document stores", "Databases and internal APIs", "n8n, Make or Zapier where it fits"],
     toolsNote:
       "We pick models and frameworks per task, balancing quality, speed and running cost, and avoid locking you into one vendor where possible.",
-    industries: ["Real estate", "Professional services", "E-commerce", "SaaS and technology", "Finance and insurance operations", "Agencies"],
+    industries: ["Real estate", "Professional services", "E-commerce", "SaaS and technology", "Agencies"],
     faqs: [
       {
         q: "What is a multi-agent AI system?",

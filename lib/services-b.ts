@@ -105,7 +105,7 @@ export const SERVICES_B: Service[] = [
     tools: ["Zapier", "Make", "n8n", "Google Workspace and Microsoft 365", "Slack and Microsoft Teams", "Accounting, CRM and project management apps", "Large language models (LLMs) for reading documents and emails", "Custom scripts and APIs"],
     toolsNote:
       "We prefer to build on the apps you already pay for, and only add new tools when they clearly save time or money.",
-    industries: ["Real estate", "Professional services", "E-commerce", "Agencies", "Healthcare administration", "Logistics and operations"],
+    industries: ["Real estate", "Professional services", "E-commerce", "Agencies", "Logistics and operations"],
     faqs: [
       {
         q: "What is an AI automation agency?",
@@ -237,7 +237,7 @@ export const SERVICES_B: Service[] = [
     tools: ["Follow Up Boss", "Lofty", "Salesforce", "HubSpot", "Pipedrive", "Zoho CRM", "GoHighLevel", "Zapier, Make and n8n", "Phone, SMS and calendar systems"],
     toolsNote:
       "We can work with most CRMs that offer an API. If yours is not listed, ask us during the consultation.",
-    industries: ["Real estate teams and brokerages", "B2B sales teams", "Mortgage and insurance", "Agencies", "Home services", "Professional services"],
+    industries: ["Real estate teams and brokerages", "B2B sales teams", "Agencies", "Home services", "Professional services"],
     faqs: [
       {
         q: "What is CRM automation?",
@@ -368,7 +368,7 @@ export const SERVICES_B: Service[] = [
     tools: ["Large language models (LLMs)", "Website chat widgets", "WhatsApp Business", "Help desks such as Zendesk, Freshdesk and Intercom", "Your CRM and calendar", "Your website, documents and knowledge base"],
     toolsNote:
       "The chatbot can live in a widget we build or inside a help desk platform you already use.",
-    industries: ["E-commerce", "Real estate", "Healthcare and clinics", "SaaS", "Education", "Hospitality and travel"],
+    industries: ["E-commerce", "Real estate", "SaaS", "Education", "Hospitality and travel"],
     faqs: [
       {
         q: "How is an AI chatbot different from a normal chatbot?",

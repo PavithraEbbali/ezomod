@@ -1,5 +1,5 @@
 export type Block =
-  | { type: "p"; text: string }
+  | { type: "p"; text: string; cite?: { label: string; href: string } }
   | { type: "ul"; items: string[] }
   | { type: "table"; head: string[]; rows: string[][] };
 
@@ -33,7 +33,7 @@ export const POSTS: Post[] = [
       "A plain-English guide to multi-agent AI automation: what it is, how AI agents work together, examples for businesses and how to get started.",
     summary:
       "Multi-agent AI automation is when several AI agents, each with one job, work together to complete a bigger task, such as handling a new lead from first contact to booked meeting. It is usually more reliable than asking one AI to do everything.",
-    author: "{{TODO: author name}}",
+    author: "Ezomod Team",
     published: "2026-10-05",
     updated: "2026-10-05",
     draft: true,
@@ -118,7 +118,7 @@ export const POSTS: Post[] = [
       "What speed to lead means, why fast lead response matters, why most teams are slow, and how AI makes instant follow-up possible 24/7.",
     summary:
       "Speed to lead is how quickly you make real contact with a new inquiry. The faster you respond, ideally within minutes, the more likely you are to reach the person while they are still interested and before a competitor does.",
-    author: "{{TODO: author name}}",
+    author: "Ezomod Team",
     published: "2026-10-05",
     updated: "2026-10-05",
     draft: true,
@@ -137,7 +137,7 @@ export const POSTS: Post[] = [
         heading: "Why does responding within 5 minutes matter?",
         blocks: [
           { type: "p", text: "When someone submits an inquiry, they are paying attention right now. They have your page open, they are thinking about their problem, and they are often contacting several businesses at once. A few minutes later they are back at work, in a meeting or talking to a competitor." },
-          { type: "p", text: "Research on online sales leads, such as the Harvard Business Review article \"The Short Life of Online Sales Leads\", found that companies which respond quickly are far more likely to reach and qualify leads than those that wait. {{TODO: verify and add a link to the source you want to cite}}" },
+          { type: "p", text: "Research on online sales leads, such as the Harvard Business Review article \"The Short Life of Online Sales Leads\", found that companies which respond quickly are far more likely to reach and qualify leads than those that wait.", cite: { label: "Harvard Business Review, \"The Short Life of Online Sales Leads\"", href: "https://hbr.org/2011/03/the-short-life-of-online-sales-leads" } },
           { type: "p", text: "The five-minute mark is a practical target: fast enough to catch people while they are still engaged, and achievable with the right system in place." },
         ],
       },
@@ -194,7 +194,7 @@ export const POSTS: Post[] = [
       "How AI lead generation compares with traditional lead generation on research, personalisation, speed and scale, and when each approach makes sense.",
     summary:
       "Traditional lead generation relies on people to build lists, research prospects and write outreach by hand. AI lead generation automates the research, scoring and first outreach, so the same team can reach more of the right prospects with more relevant messages.",
-    author: "{{TODO: author name}}",
+    author: "Ezomod Team",
     published: "2026-10-05",
     updated: "2026-10-05",
     draft: true,

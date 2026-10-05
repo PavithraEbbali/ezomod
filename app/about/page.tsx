@@ -25,8 +25,11 @@ export const metadata: Metadata = pageMetadata({
 const LINK = "font-medium text-[#007BFF] underline decoration-[#007BFF]/30 underline-offset-2 hover:decoration-[#007BFF]";
 
 const TEAM = [
-  { name: "{{TODO: founder name}}", role: "{{TODO: role, e.g. Founder}}", bio: "{{TODO: one or two sentences about background}}" },
-  { name: "{{TODO: team member name}}", role: "{{TODO: role}}", bio: "{{TODO: one or two sentences about background}}" },
+  {
+    name: "Gowrav K M",
+    role: "Founder",
+    bio: "Gowrav leads sales and marketing at Ezomod. After using AI to take control of his own clients, deals and follow-ups, he now builds AI agents that work like a member of a business's founding team, helping people grow rather than replacing them.",
+  },
 ];
 
 const PRINCIPLES = [
@@ -44,9 +47,9 @@ export default function Page() {
     ["What we are", "An AI automation agency"],
     ["What we do", "Design, build and maintain AI systems for lead generation, lead follow-up, phone calls, workflows, CRMs, customer support and websites"],
     ["Specialisation", "AI lead follow-up for real estate teams and brokerages"],
-    ["Founded", "{{TODO: year founded}}"],
-    ["Founder", "{{TODO: founder name}}"],
-    ["Location", "{{TODO: city, country}}. We work with clients remotely."],
+    ["Founded", "2026"],
+    ["Founder", "Gowrav K M"],
+    ["Location", "Mysuru, Karnataka, India. We work with clients remotely."],
     ["Website", <a key="w" href={SITE_URL} className={LINK}>www.ezomod.com</a>],
     ["Email", <a key="e" href={CONTACT_HREF} className={`${LINK} break-all`}>{CONTACT_EMAIL}</a>],
     ["LinkedIn", <a key="l" href={LINKEDIN_URL} className={LINK} rel="noopener">linkedin.com/company/ezomod</a>],
@@ -83,8 +86,7 @@ export default function Page() {
               ))}
             </ul>
             <p>
-              Our AI lead follow-up service started with real estate teams, and real estate is still
-              where it is most specialised. See{" "}
+              Real estate is where our lead follow-up work is most specialised. See{" "}
               <Link href="/industries/real-estate" className={LINK}>
                 AI automation for real estate
               </Link>
@@ -133,7 +135,7 @@ export default function Page() {
       <section className="section">
         <div className="container-x">
           <SectionIntro title="Who is on the Ezomod team?">
-            <p>{"{{TODO: one sentence about the team, e.g. size and background}}"}</p>
+            <p>A small team of AI engineers and automation specialists based in Mysuru, India, working with clients remotely.</p>
           </SectionIntro>
           <ul className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {TEAM.map((member) => (

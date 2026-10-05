@@ -28,10 +28,8 @@ const OTHER_INDUSTRIES = [
   "Professional services",
   "Home and local services",
   "E-commerce",
-  "Healthcare administration",
   "Agencies",
   "SaaS and technology",
-  "Mortgage and insurance",
 ];
 
 export default function Page() {
