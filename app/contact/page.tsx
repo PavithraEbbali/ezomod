@@ -53,7 +53,7 @@ export default function Page() {
 
             <div className="rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8">
               <h2 className="h2 !text-2xl">{calSrc ? "Or send us a message" : "Send us a message"}</h2>
-              <p className="lead mt-2">Tell us a little about your business and we&apos;ll reply with times for a call.</p>
+              <p className="lead mt-2">Share a few details about your business, and our team will be in touch to schedule a consultation.</p>
               <div className="mt-6">
                 <ContactForm services={SERVICES.map((s) => s.name)} turnstileSiteKey={TURNSTILE_SITE_KEY} />
               </div>
