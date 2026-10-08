@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { Activity, BadgeCheck, DatabaseZap, type LucideIcon } from "lucide-react";
+import SectionIntro from "@/components/content/SectionIntro";
 
 type Standard = {
   icon: LucideIcon;
@@ -43,16 +44,13 @@ export default function OperationalShift() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section bg-slate-50/70">
+    <section className="section bg-brandwash">
       <div className="container-x">
-        <div className="max-w-2xl">
-          <h2 className="h2">What happens when a new lead comes in?</h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 sm:text-lg">
-            Every inquiry goes through the same three steps, day or night, so no lead is missed.
-          </p>
-        </div>
+        <SectionIntro eyebrow="What happens when a new lead comes in?" title="Three steps. Day or night. No lead missed.">
+          <p>Every inquiry goes through the same three steps, day or night, so no lead is missed.</p>
+        </SectionIntro>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {STANDARDS.map((item, index) => (
             <motion.article
               key={item.title}

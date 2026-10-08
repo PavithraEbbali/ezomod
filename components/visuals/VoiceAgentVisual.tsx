@@ -17,7 +17,7 @@ export default function VoiceAgentVisual() {
     <VisualFrame
       label="Inbound call"
       status={
-        <span className="relative flex items-center gap-1.5 rounded-full bg-[#22C55E]/10 px-2 py-0.5 text-[10px] font-semibold text-[#15803D]">
+        <span className="relative flex items-center gap-1.5 rounded-full bg-[#22C55E]/10 px-2 py-0.5 text-[10px] font-semibold text-[#166534]">
           <span className="pulse-ring h-1.5 w-1.5 rounded-full bg-[#22C55E]" />
           Live
         </span>

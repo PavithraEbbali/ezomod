@@ -5,7 +5,7 @@ export default function VisualFrame({ label, status, children }: { label: string
   return (
     <div
       aria-hidden
-      className="mx-auto w-full max-w-md overflow-hidden rounded-2xl border border-slate-200/70 bg-white shadow-[0_24px_48px_-20px_rgba(0,30,70,0.18)]"
+      className="mx-auto w-full max-w-lg overflow-hidden lg:max-w-none rounded-2xl border border-slate-200/70 bg-white shadow-[0_24px_48px_-20px_rgba(0,30,70,0.18)]"
     >
       <div className="relative flex h-9 items-center justify-between border-b border-slate-200/60 px-3">
         <span className="flex gap-1.5">
@@ -16,7 +16,7 @@ export default function VisualFrame({ label, status, children }: { label: string
         <span className="absolute inset-x-0 text-center font-mono text-[10px] uppercase tracking-widest text-slate-500">{label}</span>
         {status}
       </div>
-      <div className="p-4 sm:p-5">{children}</div>
+      <div className="p-4 sm:p-6">{children}</div>
     </div>
   );
 }

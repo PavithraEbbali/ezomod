@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PenLine } from "lucide-react";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
@@ -19,14 +20,20 @@ export default function Page() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Blog", path: "/blog" }]} />
-      <PageHeader title="The Ezomod blog">
+      <PageHeader eyebrow="Blog" title="The Ezomod blog">
         <p>Plain-English guides on AI automation, lead generation and AI agents for growing businesses.</p>
       </PageHeader>
 
-      <section className="section">
+      <section className="section bg-tint">
         <div className="container-x">
           {posts.length === 0 ? (
-            <p className="lead">
+            <div className="flex max-w-2xl flex-col gap-5 rounded-2xl border border-slate-200/80 bg-white p-8 shadow-[0_10px_30px_-12px_rgba(0,30,70,0.10)] sm:flex-row sm:items-center">
+            <span className="icon-circle h-14 w-14 bg-gradient-to-br from-[#007BFF] to-[#22C55E] text-white">
+              <PenLine className="h-6 w-6" aria-hidden />
+            </span>
+            <div>
+            <h2 className="font-display text-2xl font-bold text-slate-900">Articles coming soon</h2>
+            <p className="lead mt-2">
               New articles are on the way. In the meantime, read the{" "}
               <Link href="/faq" className="font-medium text-[#0062CC] underline decoration-[#007BFF]/30 underline-offset-2">
                 Ezomod FAQ
@@ -37,6 +44,8 @@ export default function Page() {
               </Link>
               .
             </p>
+            </div>
+            </div>
           ) : (
             <ul className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

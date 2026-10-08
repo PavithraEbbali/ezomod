@@ -162,7 +162,7 @@ export default async function Page({ params }: Props) {
         </div>
       </article>
 
-      <section className="section border-y border-[#00A3FF]/10 bg-white/60">
+      <section className="section bg-tint">
         <div className="container-x">
           <h2 className="h2">Related Ezomod services</h2>
           <div className="mt-8">

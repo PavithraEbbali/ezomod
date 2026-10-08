@@ -5,7 +5,6 @@ import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import Chips from "@/components/content/Chips";
 import FaqList from "@/components/content/FaqList";
-import LegacyServicePage from "@/components/content/LegacyServicePage";
 import ReadMore from "@/components/content/ReadMore";
 import SectionIntro from "@/components/content/SectionIntro";
 import ServiceCards from "@/components/content/ServiceCards";
@@ -29,7 +28,7 @@ const LINK = "font-medium text-[#0062CC] underline decoration-[#007BFF]/30 under
  */
 export default function ServicePage({ service, extra }: { service: Service; extra?: ReactNode }) {
   const design = getServiceDesign(service.slug);
-  if (!design) return <LegacyServicePage service={service} extra={extra} />;
+  if (!design) throw new Error(`Missing SERVICE_DESIGN entry for ${service.slug}`);
 
   const related = service.related.map(getService).filter((s): s is Service => Boolean(s));
   const servesRealEstate = service.industries.some((i) => i.toLowerCase().includes("real estate"));
@@ -43,7 +42,7 @@ export default function ServicePage({ service, extra }: { service: Service; extr
       {/* Hero */}
       <header className="relative isolate overflow-hidden border-b border-[#00A3FF]/10">
         <div aria-hidden className={cn("absolute inset-0 -z-10", design.accent.glow)} />
-        <div className="container-x grid items-center gap-10 py-10 sm:py-14 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+        <div className="container-x grid items-center gap-10 py-10 sm:py-14 lg:grid-cols-2 lg:gap-12">
           <div>
             <p className={cn("flex items-center gap-2 text-sm font-semibold uppercase tracking-wider", design.accent.text)}>
               <span className={cn("grid h-8 w-8 place-items-center rounded-lg", design.accent.tile)}>
@@ -82,7 +81,12 @@ export default function ServicePage({ service, extra }: { service: Service; extr
               </ReadMore>
             ) : null}
           </div>
-          <div className="h-fit rounded-2xl border border-slate-200/80 bg-[#F8FBFF] p-6 sm:p-8">
+          <div
+            className={cn(
+              "h-fit rounded-2xl border border-l-4 border-[#00A3FF]/20 bg-gradient-to-br from-[#F2F8FF] to-[#F0FBF4] p-6 shadow-[0_10px_30px_-12px_rgba(0,30,70,0.10)] sm:p-8",
+              design.accent.border,
+            )}
+          >
             <h3 className="text-lg font-semibold text-slate-900">Who needs {service.navLabel}?</h3>
             <p className="mt-1 text-slate-700">Ezomod builds this for teams like these:</p>
             <ul className="mt-5 space-y-3">
@@ -109,9 +113,9 @@ export default function ServicePage({ service, extra }: { service: Service; extr
             {service.problems.map((item, i) => {
               const Icon = design.problemIcons[i];
               return (
-                <li key={item.title} className="rounded-2xl border border-slate-200/70 bg-white p-6 shadow-[0_8px_30px_rgb(0,0,0,0.03)]">
+                <li key={item.title} className="lift-card">
                   {Icon ? (
-                    <span className={cn("inline-grid h-11 w-11 place-items-center rounded-xl", design.accent.tile)}>
+                    <span className={cn("icon-circle", design.accent.tile)}>
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
                   ) : null}
@@ -125,25 +129,23 @@ export default function ServicePage({ service, extra }: { service: Service; extr
       </section>
 
       {/* What we build */}
-      <section className="section bg-plain">
+      <section className="section bg-brandwash">
         <div className="container-x">
           <SectionIntro eyebrow={`What's included in ${service.name}?`} title={design.buildHeading}>
             <p>Every project is scoped to your business, but most include the following.</p>
           </SectionIntro>
-          <ul className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {service.included.map((item, i) => {
               const Icon = design.includedIcons[i];
               return (
-                <li key={item.title} className="flex gap-4">
+                <li key={item.title} className="lift-card">
                   {Icon ? (
-                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-gradient-to-br from-[#007BFF] to-[#22C55E] text-white shadow-md shadow-[#0080FF]/20">
+                    <span className="icon-circle bg-gradient-to-br from-[#007BFF] to-[#22C55E] text-white shadow-md shadow-[#0080FF]/20">
                       <Icon className="h-5 w-5" aria-hidden />
                     </span>
                   ) : null}
-                  <div>
-                    <h3 className="text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
-                    <p className="mt-1.5 text-[15px] leading-relaxed text-slate-700">{item.text}</p>
-                  </div>
+                  <h3 className="mt-4 text-lg font-semibold leading-snug text-slate-900">{item.title}</h3>
+                  <p className="mt-2 text-[15px] leading-relaxed text-slate-700">{item.text}</p>
                 </li>
               );
             })}

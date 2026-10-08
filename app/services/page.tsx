@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
@@ -6,9 +7,12 @@ import SectionIntro from "@/components/content/SectionIntro";
 import ServiceIcon from "@/components/content/ServiceIcon";
 import JsonLd from "@/components/JsonLd";
 import PageHeader from "@/components/PageHeader";
+import ButtonLink from "@/components/ui/ButtonLink";
+import ServiceMiniVisual from "@/components/visuals/ServiceMiniVisual";
 import { serviceList } from "@/lib/schema";
 import { pageMetadata } from "@/lib/seo";
 import { SERVICES, servicePath } from "@/lib/services";
+import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   title: "AI Automation Services | Ezomod",
@@ -33,7 +37,30 @@ export default function Page() {
     <>
       <JsonLd data={serviceList()} />
       <Breadcrumbs items={[{ name: "Services", path: "/services" }]} />
-      <PageHeader title="AI automation services">
+      <PageHeader
+        eyebrow="8 services, one team"
+        title="AI automation services"
+        actions={
+          <>
+            <ButtonLink href={CONSULTATION_HREF}>{CTA_LABEL}</ButtonLink>
+            <ButtonLink href="#which-service" variant="secondary">
+              Which service do I need?
+            </ButtonLink>
+          </>
+        }
+        aside={
+          <ul aria-hidden className="grid grid-cols-4 gap-3">
+            {SERVICES.map((service, i) => (
+              <li
+                key={service.slug}
+                className={`grid aspect-square place-items-center rounded-2xl border border-slate-200/70 bg-white text-[#0062CC] shadow-[0_10px_30px_-12px_rgba(0,30,70,0.12)] ${i % 3 === 0 ? "bg-gradient-to-br from-[#EBF5FF] to-[#ECFDF3]" : ""}`}
+              >
+                <ServiceIcon name={service.icon} className="h-7 w-7" />
+              </li>
+            ))}
+          </ul>
+        }
+      >
         <p>
           Ezomod designs, builds and maintains AI systems that win more leads and remove repetitive
           work. Every service is built around your existing tools and process, and you can start
@@ -41,64 +68,63 @@ export default function Page() {
         </p>
       </PageHeader>
 
-      <section className="section">
+      <section className="section bg-tint">
         <div className="container-x">
-          <SectionIntro title="What services does Ezomod offer?">
+          <SectionIntro eyebrow="What services does Ezomod offer?" title="Win leads. Automate work. Grow online.">
             <p>Ezomod offers eight services, grouped around winning leads, automating work and your website.</p>
           </SectionIntro>
           <ul className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
             {SERVICES.map((service) => (
-              <li key={service.slug} className="card flex flex-col p-6 sm:p-8">
-                <div className="flex items-center gap-4">
-                  <span className="icon-tile">
-                    <ServiceIcon name={service.icon} className="h-5 w-5" />
-                  </span>
-                  <h3 className="text-xl font-semibold leading-snug text-slate-900">
-                    <Link href={servicePath(service.slug)} className="hover:text-[#007BFF]">
-                      {service.name}
-                    </Link>
-                  </h3>
+              <li key={service.slug} className="card flex flex-col overflow-hidden">
+                <ServiceMiniVisual icon={service.icon} />
+                <div className="flex flex-1 flex-col p-6 sm:p-8">
+                  <div className="flex items-center gap-4">
+                    <span className="icon-tile">
+                      <ServiceIcon name={service.icon} className="h-5 w-5" />
+                    </span>
+                    <h3 className="text-xl font-semibold leading-snug text-slate-900">
+                      <Link href={servicePath(service.slug)} className="hover:text-[#007BFF]">
+                        {service.name}
+                      </Link>
+                    </h3>
+                  </div>
+                  <p className="mt-4 font-medium text-slate-900">{service.definition}</p>
+                  <p className="mt-3 flex-1 leading-relaxed text-slate-700">{service.summary}</p>
+                  <Link href={servicePath(service.slug)} className="mt-5 inline-flex min-h-11 items-center text-sm font-semibold text-[#0062CC] hover:underline">
+                    Learn more about {service.navLabel} →
+                  </Link>
                 </div>
-                <p className="mt-4 font-medium text-slate-800">{service.definition}</p>
-                <p className="mt-3 flex-1 leading-relaxed text-slate-600">{service.summary}</p>
-                <Link href={servicePath(service.slug)} className="mt-5 text-sm font-medium text-[#0062CC] hover:underline">
-                  Learn more about {service.navLabel} →
-                </Link>
               </li>
             ))}
           </ul>
         </div>
       </section>
 
-      <section className="section border-y border-[#00A3FF]/10 bg-white/60">
+      <section id="which-service" className="section bg-navy">
         <div className="container-x">
-          <SectionIntro title="Which service do I need?">
+          <SectionIntro dark eyebrow="Which service do I need?" title="Find the right AI automation service for your problem.">
             <p>Start from the problem you want to solve. If several apply, we will help you decide what to do first on the call.</p>
           </SectionIntro>
-          <div className="mt-8 overflow-x-auto rounded-2xl border border-slate-200/80 bg-white">
-            <table className="w-full min-w-[520px] text-left">
-              <thead className="bg-slate-50 text-sm text-slate-500">
-                <tr>
-                  <th scope="col" className="px-5 py-3 font-semibold">If this sounds like you…</th>
-                  <th scope="col" className="px-5 py-3 font-semibold">Start with</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200/80">
-                {CHOOSER.map((row) => {
-                  const service = SERVICES.find((s) => s.slug === row.slug)!;
-                  return (
-                    <tr key={row.slug}>
-                      <td className="px-5 py-4 text-slate-700">{row.need}</td>
-                      <td className="px-5 py-4">
-                        <Link href={servicePath(row.slug)} className="font-medium text-[#0062CC] hover:underline">
-                          {service.name}
-                        </Link>
-                      </td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
+          <div className="mt-10 grid gap-3 md:grid-cols-2">
+            {CHOOSER.map((row) => {
+              const service = SERVICES.find((s) => s.slug === row.slug)!;
+              return (
+                <Link
+                  key={row.slug}
+                  href={servicePath(row.slug)}
+                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/5 p-5 transition-colors hover:bg-white/10"
+                >
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 text-[#5CC8FF]">
+                    <ServiceIcon name={service.icon} className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block text-sm text-white/70">If this sounds like you… &ldquo;{row.need}&rdquo;</span>
+                    <span className="mt-1 block font-semibold text-white">Start with {service.name}</span>
+                  </span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-white/70 transition-transform group-hover:translate-x-0.5" aria-hidden />
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

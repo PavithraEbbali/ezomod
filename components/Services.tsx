@@ -4,6 +4,7 @@ import { motion, useMotionValue, useReducedMotion, useSpring, useTransform } fro
 import { CalendarClock, CheckCircle2, Headset, User } from "lucide-react";
 import { useEffect, useState, type MouseEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import SectionIntro from "@/components/content/SectionIntro";
 
 const MAX_TILT = 4;
 
@@ -131,7 +132,7 @@ function ContactGraphMicroUI() {
         <span className="grid h-11 w-11 place-items-center rounded-full border border-slate-200 bg-slate-100 text-slate-400">
           <User className="h-5 w-5" />
         </span>
-        <span className="text-[11px] font-medium text-slate-400">No reply</span>
+        <span className="text-[11px] font-medium text-slate-600">No reply</span>
       </div>
       <svg className="mx-2 h-2 flex-1" preserveAspectRatio="none" viewBox="0 0 100 2">
         <line
@@ -181,15 +182,14 @@ function SupportMicroUI() {
 
 export default function Services() {
   return (
-    <section id="features" className="section">
+    <section id="features" className="section bg-plain">
       <div className="container-x">
-        <div className="max-w-2xl">
-          <h2 className="h2">What does the AI lead follow-up system do?</h2>
-          <p className="lead mt-4">
+        <SectionIntro eyebrow="What does the AI lead follow-up system do?" title="One system for the whole lead lifecycle.">
+          <p>
             One system that covers the whole lead lifecycle, from the first inquiry to the client
             relationship after the contract is signed.
           </p>
-        </div>
+        </SectionIntro>
 
         <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
           <BentoCard className="md:col-span-2">

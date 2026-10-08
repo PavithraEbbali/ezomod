@@ -4,6 +4,8 @@ import ContactSection from "@/components/ContactSection";
 import Breadcrumbs from "@/components/content/Breadcrumbs";
 import FaqList from "@/components/content/FaqList";
 import PageHeader from "@/components/PageHeader";
+import ButtonLink from "@/components/ui/ButtonLink";
+import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 import JsonLd from "@/components/JsonLd";
 import { ALL_FAQS, FAQ_GROUPS } from "@/lib/faq";
 import { faqPage } from "@/lib/schema";
@@ -23,7 +25,11 @@ export default function Page() {
     <>
       <JsonLd data={faqPage(ALL_FAQS)} />
       <Breadcrumbs items={[{ name: "FAQ", path: "/faq" }]} />
-      <PageHeader title="Frequently asked questions">
+      <PageHeader
+        eyebrow="Ezomod FAQ"
+        title="Frequently asked questions"
+        actions={<ButtonLink href={CONSULTATION_HREF}>{CTA_LABEL}</ButtonLink>}
+      >
         <p>
           Short, direct answers about Ezomod, our AI automation services and how we work. Can&apos;t
           find your question?{" "}
@@ -34,13 +40,17 @@ export default function Page() {
         </p>
       </PageHeader>
 
-      <div className="container-x grid gap-10 py-12 sm:py-16 lg:grid-cols-[220px_1fr]">
-        <nav aria-label="FAQ topics" className="lg:sticky lg:top-24 lg:self-start">
-          <p className="text-sm font-semibold text-slate-900">Topics</p>
-          <ul className="mt-3 space-y-2 text-sm">
+      <div className="section bg-tint">
+      <div className="container-x grid gap-10 lg:grid-cols-[240px_1fr]">
+        <nav aria-label="FAQ topics" className="h-fit rounded-2xl border border-slate-200/80 bg-white p-5 shadow-[0_10px_30px_-12px_rgba(0,30,70,0.10)] lg:sticky lg:top-24">
+          <p className="eyebrow">Topics</p>
+          <ul className="mt-3 flex flex-wrap gap-2 lg:block lg:space-y-1">
             {FAQ_GROUPS.map((group) => (
               <li key={group.title}>
-                <a href={`#${slug(group.title)}`} className="text-slate-600 hover:text-[#007BFF]">
+                <a
+                  href={`#${slug(group.title)}`}
+                  className="flex min-h-11 items-center rounded-lg border border-slate-200 px-3 text-sm font-medium text-slate-700 hover:bg-[#F0F7FF] hover:text-[#0062CC] lg:border-0"
+                >
                   {group.title}
                 </a>
               </li>
@@ -59,6 +69,7 @@ export default function Page() {
             </section>
           ))}
         </div>
+      </div>
       </div>
 
       <ContactSection />

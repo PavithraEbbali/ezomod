@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FileCheck, Linkedin, ListChecks, Mail } from "lucide-react";
 import Link from "next/link";
 import CalEmbed from "@/components/contact/CalEmbed";
 import ContactForm from "@/components/contact/ContactForm";
@@ -30,7 +31,7 @@ export default function Page() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Contact", path: "/contact" }]} />
-      <PageHeader title="Book a free 30-minute consultation">
+      <PageHeader eyebrow="Contact Ezomod" title="Book a free 30-minute consultation">
         <p>
           Talk to the people who would build your system. We&apos;ll look at how things work today,
           where time or leads are slipping through the cracks, and what Ezomod would build. No sales
@@ -38,7 +39,7 @@ export default function Page() {
         </p>
       </PageHeader>
 
-      <section className="section !pt-12">
+      <section className="section bg-tint">
         <div className="container-x grid gap-10 lg:grid-cols-[1.4fr_1fr]">
           <div className="space-y-10">
             {calSrc ? (
@@ -51,7 +52,7 @@ export default function Page() {
               </div>
             ) : null}
 
-            <div className="rounded-2xl border border-slate-200/80 bg-white p-6 sm:p-8">
+            <div className="rounded-2xl border border-slate-200/80 bg-white p-6 shadow-[0_20px_40px_-20px_rgba(0,30,70,0.18)] sm:p-8">
               <h2 className="h2 !text-2xl">{calSrc ? "Or send us a message" : "Send us a message"}</h2>
               <p className="lead mt-2">Share a few details about your business, and our team will be in touch to schedule a consultation.</p>
               <div className="mt-6">
@@ -60,9 +61,14 @@ export default function Page() {
             </div>
           </div>
 
-          <aside className="space-y-8">
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">What happens on the call?</h2>
+          <aside className="h-fit space-y-4">
+            <div className="rounded-2xl border border-slate-200/70 bg-white p-6">
+              <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+                <span className="icon-circle h-10 w-10 bg-[#007BFF]/10 text-[#0062CC]">
+                  <ListChecks className="h-5 w-5" aria-hidden />
+                </span>
+                What happens on the call?
+              </h2>
               <div className="mt-4">
                 <CheckList
                   items={[
@@ -73,16 +79,26 @@ export default function Page() {
                 />
               </div>
             </div>
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">What happens after the call?</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+            <div className="rounded-2xl border border-slate-200/70 bg-white p-6">
+              <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+                <span className="icon-circle h-10 w-10 bg-[#007BFF]/10 text-[#0062CC]">
+                  <FileCheck className="h-5 w-5" aria-hidden />
+                </span>
+                What happens after the call?
+              </h2>
+              <p className="mt-3 leading-relaxed text-slate-700">
                 If it&apos;s a good fit, you receive a written scope and timeline. Nothing starts until
                 you approve it.
               </p>
             </div>
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">Prefer email?</h2>
-              <p className="mt-3 leading-relaxed text-slate-600">
+            <div className="rounded-2xl border border-slate-200/70 bg-white p-6">
+              <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+                <span className="icon-circle h-10 w-10 bg-[#007BFF]/10 text-[#0062CC]">
+                  <Mail className="h-5 w-5" aria-hidden />
+                </span>
+                Prefer email?
+              </h2>
+              <p className="mt-3 leading-relaxed text-slate-700">
                 <a href={MAILTO} className={LINK}>
                   Email us to book a call
                 </a>{" "}
@@ -93,9 +109,14 @@ export default function Page() {
                 .
               </p>
             </div>
-            <div>
-              <h2 className="text-lg font-semibold text-slate-900">Other ways to reach Ezomod</h2>
-              <ul className="mt-3 space-y-2 text-slate-600">
+            <div className="rounded-2xl border border-slate-200/70 bg-white p-6">
+              <h2 className="flex items-center gap-3 text-lg font-semibold text-slate-900">
+                <span className="icon-circle h-10 w-10 bg-[#007BFF]/10 text-[#0062CC]">
+                  <Linkedin className="h-5 w-5" aria-hidden />
+                </span>
+                Other ways to reach Ezomod
+              </h2>
+              <ul className="mt-3 space-y-2 text-slate-700">
                 <li>
                   <a href={LINKEDIN_URL} className={LINK} rel="noopener">
                     Ezomod on LinkedIn

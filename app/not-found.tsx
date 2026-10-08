@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import PageHeader from "@/components/PageHeader";
 import ButtonLink from "@/components/ui/ButtonLink";
@@ -23,19 +24,20 @@ const LINKS = [
 export default function NotFound() {
   return (
     <>
-      <PageHeader title="We couldn't find that page">
+      <PageHeader eyebrow="Error 404" title="We couldn't find that page">
         <p>The link may be old or mistyped. Here are the main pages on the Ezomod site.</p>
       </PageHeader>
-      <section className="section">
+      <section className="section bg-tint">
         <div className="container-x">
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="block rounded-xl border border-slate-200/60 bg-white px-5 py-4 font-medium text-slate-900 transition-colors hover:border-[#007BFF]/40 hover:text-[#007BFF]"
+                  className="lift-card flex items-center justify-between gap-3 p-5 font-semibold text-slate-900 hover:text-[#0062CC]"
                 >
                   {link.label}
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#0062CC]" aria-hidden />
                 </Link>
               </li>
             ))}

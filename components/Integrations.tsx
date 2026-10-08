@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { BrainCircuit, DatabaseZap, Webhook, type LucideIcon } from "lucide-react";
 import { Fragment } from "react";
+import SectionIntro from "@/components/content/SectionIntro";
 import { cn } from "@/lib/utils";
 
 type Stage = {
@@ -145,15 +146,14 @@ export function FlowDiagram({ className }: { className?: string }) {
 
 export default function Integrations() {
   return (
-    <section id="infrastructure" className="section border-y border-[#00A3FF]/10 bg-white/60">
+    <section id="infrastructure" className="section bg-tint">
       <div className="container-x">
-        <div className="max-w-2xl">
-          <h2 className="h2">Does it work with my lead sources and CRM?</h2>
-          <p className="lead mt-4">
+        <SectionIntro eyebrow="Does it work with my lead sources and CRM?" title="Plugs into the tools you already use.">
+          <p>
             Yes. Ezomod takes in leads from any source, follows up by phone, text, WhatsApp and
             email, and writes the results straight into the systems your team already uses.
           </p>
-        </div>
+        </SectionIntro>
 
         <FlowDiagram className="mt-12" />
       </div>

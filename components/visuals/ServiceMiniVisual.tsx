@@ -11,7 +11,7 @@ function LeadGen() {
         <div key={score} className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-2 py-1.5">
           <span className="h-4 w-4 rounded-full bg-slate-200" />
           <span className="h-1.5 flex-1 rounded-full bg-slate-100" style={{ maxWidth: `${70 - i * 12}%` }} />
-          <span className={i === 0 ? "rounded bg-[#22C55E]/15 px-1 text-[10px] font-bold text-[#15803D]" : "rounded bg-slate-100 px-1 text-[10px] font-bold text-slate-600"}>
+          <span className={i === 0 ? "rounded bg-[#22C55E]/15 px-1 text-[10px] font-bold text-[#166534]" : "rounded bg-slate-100 px-1 text-[10px] font-bold text-slate-600"}>
             {score}
           </span>
         </div>
@@ -39,11 +39,7 @@ function Voice() {
   return (
     <div className="flex h-10 w-44 items-center gap-[3px]">
       {bars.map((h, i) => (
-        <span
-          key={i}
-          style={{ height: `${h * 100}%`, animationDelay: `${(i % 5) * 0.15}s` }}
-          className="flex-1 animate-wave rounded-full bg-gradient-to-b from-[#6D5BFF] to-[#00A3FF] motion-reduce:animate-none"
-        />
+        <span key={i} style={{ height: `${h * 100}%` }} className="flex-1 rounded-full bg-gradient-to-b from-[#6D5BFF] to-[#00A3FF]" />
       ))}
     </div>
   );
@@ -95,7 +91,7 @@ function Crm() {
       </div>
       <div className="mt-2 flex gap-1">
         <span className="rounded bg-[#007BFF]/10 px-1 text-[10px] font-semibold text-[#0062CC]">Hot lead</span>
-        <span className="rounded bg-[#22C55E]/15 px-1 text-[10px] font-semibold text-[#15803D]">Booked</span>
+        <span className="rounded bg-[#22C55E]/15 px-1 text-[10px] font-semibold text-[#166534]">Booked</span>
       </div>
       <span className="mt-1.5 block h-1.5 w-3/4 rounded-full bg-slate-100" />
     </div>
@@ -130,7 +126,7 @@ function Website() {
           <span className="block h-1.5 w-14 rounded-full bg-slate-200" />
           <span className="block h-1.5 w-10 rounded-full bg-slate-100" />
         </div>
-        <span className="grid h-8 w-8 place-items-center rounded-full border-[3px] border-[#22C55E] text-[10px] font-bold text-[#15803D]">SEO</span>
+        <span className="grid h-8 w-8 place-items-center rounded-full border-[3px] border-[#22C55E] text-[10px] font-bold text-[#166534]">SEO</span>
       </div>
     </div>
   );
@@ -147,7 +143,7 @@ const VISUALS: Record<ServiceIcon, () => ReactNode> = {
   globe: Website,
 };
 
-/** Small decorative vignette for a service card, keyed by the service icon. */
+/** Small static vignette for a service card, keyed by the service icon (no animation, to keep list pages light). */
 export default function ServiceMiniVisual({ icon }: { icon: ServiceIcon }) {
   const Visual = VISUALS[icon];
   return (
