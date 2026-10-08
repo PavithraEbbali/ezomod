@@ -6,6 +6,7 @@ import JsonLd from "@/components/JsonLd";
 import StickyCta from "@/components/StickyCta";
 import { GA4_ID, GSC_VERIFICATION } from "@/lib/config";
 import Navbar from "@/components/Navbar";
+import { POSTS } from "@/lib/blog";
 import { organization, website } from "@/lib/schema";
 import { OG_IMAGE } from "@/lib/seo";
 import { SERVICES, servicePath } from "@/lib/services";
@@ -59,7 +60,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${inter.variable} ${sora.variable}`}>
       <body>
         <JsonLd data={[organization(), website()]} />
-        <Navbar services={SERVICES.map((s) => ({ href: servicePath(s.slug), name: s.name }))} />
+        <Navbar
+          services={SERVICES.map((s) => ({ href: servicePath(s.slug), name: s.name }))}
+          showBlog={POSTS.some((post) => !post.draft)}
+        />
         <main className="pt-16">{children}</main>
         <Footer />
         <StickyCta />

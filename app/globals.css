@@ -29,15 +29,37 @@
   }
 
   .section {
-    @apply py-16 sm:py-24;
+    @apply py-14 sm:py-20;
+  }
+
+  /* Section backgrounds: alternate white / tint, with one navy band per page. */
+  .bg-plain {
+    @apply bg-white;
+  }
+
+  .bg-tint {
+    @apply border-y border-[#00A3FF]/10 bg-[#F2F8FF];
+  }
+
+  .bg-navy {
+    @apply bg-gradient-to-br from-[#0B1528] via-[#0D2040] to-[#0A2E28] text-white;
   }
 
   .h2 {
-    @apply font-display text-3xl font-semibold leading-tight tracking-tight text-[#0F172A] sm:text-4xl;
+    @apply font-display text-[1.9rem] font-bold leading-[1.15] tracking-tight text-[#0F172A] sm:text-[2.5rem];
+  }
+
+  /* Small label above a section heading; often carries the plain-English question. */
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-wider text-[#0062CC];
   }
 
   .lead {
-    @apply text-base leading-relaxed text-steel sm:text-lg;
+    @apply text-base leading-relaxed text-slate-700 sm:text-[17px];
+  }
+
+  .body {
+    @apply text-base leading-relaxed text-slate-700;
   }
 
   .text-brand {
@@ -58,8 +80,64 @@
   }
 }
 
+/* "Read more" blocks built on <details>: content stays in the static HTML. */
+.read-more > summary {
+  list-style: none;
+}
+.read-more > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Transcript / chat lines that slide in one after another (transform only, never hidden). */
+@keyframes rise {
+  from {
+    transform: translateY(8px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+.rise {
+  animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    transform: scale(0.6);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+.typing-dot {
+  animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+  .rise,
+  .typing-dot,
+  .pulse-ring {
+    animation: none;
   }
 }

@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Check } from "lucide-react";
 import type { ReactNode } from "react";
+import SectionIntro from "@/components/content/SectionIntro";
 
 function CrmRecordMicroUI() {
   return (
@@ -109,20 +110,17 @@ export default function Differentiator() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section className="section border-y border-[#00A3FF]/10 bg-white/60">
+    <section className="section bg-plain">
       <div className="container-x">
-        <div className="max-w-3xl">
-          <h2 className="font-display text-3xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-4xl">
-            Why choose Ezomod?
-          </h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
+        <SectionIntro eyebrow="Why choose Ezomod?" title="Built into your tools. Run by us.">
+          <p>
             Because Ezomod isn&apos;t another tool for your team to manage. We don&apos;t sell software subscriptions. We build custom
             AI systems that work inside the tools you already use, such as your CRM, inbox and
             phone system, and we keep them running so your team doesn&apos;t have to.
           </p>
-        </div>
+        </SectionIntro>
 
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-3">
           {PILLARS.map((pillar, index) => (
             <motion.article
               key={pillar.title}
@@ -141,7 +139,7 @@ export default function Differentiator() {
               </div>
               <div className="px-6 pb-6">
                 <h3 className="text-lg font-semibold text-slate-900">{pillar.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{pillar.text}</p>
+                <p className="mt-2 text-[15px] leading-relaxed text-slate-700">{pillar.text}</p>
               </div>
             </motion.article>
           ))}

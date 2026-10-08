@@ -1,6 +1,9 @@
 "use client";
 
 import { motion, useReducedMotion, type Variants } from "framer-motion";
+import type { ReactNode } from "react";
+import SectionIntro from "@/components/content/SectionIntro";
+import { cn } from "@/lib/utils";
 
 export type Step = { title: string; text: string };
 
@@ -58,30 +61,36 @@ export default function Process({
   title = "How setup works",
   intro = "Most teams are live within a few weeks. We do the technical work; your team reviews and approves each stage.",
   id = "setup-process",
+  eyebrow,
+  dark = false,
+  children,
 }: {
   steps?: readonly Step[];
   title?: string;
   intro?: string;
   id?: string;
+  eyebrow?: string;
+  /** Renders as the page's dark navy band. */
+  dark?: boolean;
+  /** Rendered between the intro and the steps (e.g. a flow diagram). */
+  children?: ReactNode;
 }) {
   const reduceMotion = useReducedMotion();
   const STOPS: readonly string[] = steps.length > 4 ? STOPS_5 : STOPS_4;
 
   return (
-    <section id={id} className="section border-y border-[#00A3FF]/10 bg-white/60">
+    <section id={id} className={cn("section", dark ? "bg-navy" : "bg-tint")}>
       <div className="container-x">
-        <div className="max-w-2xl">
-          <h2 className="h2">{title}</h2>
-          <p className="lead mt-4">
-            {intro}
-          </p>
-        </div>
+        <SectionIntro title={title} eyebrow={eyebrow} dark={dark}>
+          <p>{intro}</p>
+        </SectionIntro>
+        {children}
 
         <motion.ol
           initial={reduceMotion ? "lit" : "idle"}
           whileInView="lit"
           viewport={{ once: true, amount: 0.4 }}
-          className="mt-14 flex flex-col md:flex-row"
+          className="mt-12 flex flex-col md:flex-row"
         >
           {steps.map((step, index) => {
             const hasNext = index < steps.length - 1;
@@ -97,7 +106,7 @@ export default function Process({
                   <>
                     <span
                       aria-hidden
-                      className="absolute -bottom-[35px] left-[10px] top-[35px] w-0.5 bg-slate-200 md:hidden"
+                      className={cn("absolute -bottom-[35px] left-[10px] top-[35px] w-0.5 md:hidden", dark ? "bg-white/15" : "bg-slate-200")}
                     />
                     <motion.span
                       aria-hidden
@@ -108,7 +117,7 @@ export default function Process({
                     />
                     <span
                       aria-hidden
-                      className="absolute -right-[11px] left-[11px] top-[34px] hidden h-0.5 bg-slate-200 md:block"
+                      className={cn("absolute -right-[11px] left-[11px] top-[34px] hidden h-0.5 md:block", dark ? "bg-white/15" : "bg-slate-200")}
                     />
                     <motion.span
                       aria-hidden
@@ -121,16 +130,19 @@ export default function Process({
                 ) : null}
 
                 <div className="relative flex w-[22px] shrink-0 flex-col items-center">
-                  <span className="mb-2 font-mono text-xs font-bold leading-4 text-slate-900">
+                  <span className={cn("mb-2 font-mono text-xs font-bold leading-4", dark ? "text-white" : "text-slate-900")}>
                     {index + 1}
                   </span>
                   <motion.span
                     aria-hidden
                     custom={index}
                     variants={nodeRing}
-                    className="grid h-[22px] w-[22px] place-items-center rounded-full border border-slate-200 bg-white/50 p-1 backdrop-blur-md"
+                    className={cn(
+                      "grid h-[22px] w-[22px] place-items-center rounded-full border p-1 backdrop-blur-md",
+                      dark ? "border-white/25 bg-white/10" : "border-slate-200 bg-white/50",
+                    )}
                   >
-                    <span className="relative h-3 w-3 rounded-full bg-slate-200">
+                    <span className={cn("relative h-3 w-3 rounded-full", dark ? "bg-white/20" : "bg-slate-200")}>
                       <motion.span
                         custom={index}
                         variants={nodeCore}
@@ -145,8 +157,8 @@ export default function Process({
                   transition={{ duration: 0.2 }}
                   className="min-w-0"
                 >
-                  <h3 className="mb-2 mt-6 text-lg font-semibold text-slate-900">{step.title}</h3>
-                  <p className="text-sm leading-relaxed text-slate-600">{step.text}</p>
+                  <h3 className={cn("mb-2 mt-6 text-lg font-semibold", dark ? "text-white" : "text-slate-900")}>{step.title}</h3>
+                  <p className={cn("text-[15px] leading-relaxed", dark ? "text-white/75" : "text-slate-700")}>{step.text}</p>
                 </motion.div>
               </li>
             );

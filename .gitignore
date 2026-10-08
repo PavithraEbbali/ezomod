@@ -11,3 +11,4 @@ next-env.d.ts
 
 # Internal ops runbook (kept local; repo is public)
 DEPLOYMENT.md
+screenshots/

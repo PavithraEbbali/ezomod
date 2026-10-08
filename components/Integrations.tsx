@@ -129,6 +129,20 @@ function Connector({ index }: { index: number }) {
   );
 }
 
+/** Lead sources → AI → your systems, as three connected cards. Also used on the home page. */
+export function FlowDiagram({ className }: { className?: string }) {
+  return (
+    <div className={cn("flex flex-col items-stretch lg:flex-row", className)}>
+      {STAGES.map((stage, index) => (
+        <Fragment key={stage.title}>
+          <StageCard stage={stage} />
+          {index < STAGES.length - 1 ? <Connector index={index} /> : null}
+        </Fragment>
+      ))}
+    </div>
+  );
+}
+
 export default function Integrations() {
   return (
     <section id="infrastructure" className="section border-y border-[#00A3FF]/10 bg-white/60">
@@ -141,14 +155,7 @@ export default function Integrations() {
           </p>
         </div>
 
-        <div className="mt-12 flex flex-col items-stretch lg:flex-row">
-          {STAGES.map((stage, index) => (
-            <Fragment key={stage.title}>
-              <StageCard stage={stage} />
-              {index < STAGES.length - 1 ? <Connector index={index} /> : null}
-            </Fragment>
-          ))}
-        </div>
+        <FlowDiagram className="mt-12" />
       </div>
     </section>
   );

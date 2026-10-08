@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import ButtonLink from "@/components/ui/ButtonLink";
 import { CONSULTATION_HREF, CTA_LABEL } from "@/lib/site";
 
-const LINKS = [
+const ALL_LINKS = [
   { label: "Industries", href: "/industries/real-estate" },
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
@@ -19,8 +19,12 @@ const LINK_CLASS = "rounded-md px-3 py-2 text-sm font-medium text-[#334155] tran
 
 export type NavService = { href: string; name: string };
 
-/** `services` is passed from the server layout so the full service content stays out of the client bundle. */
-export default function Navbar({ services }: { services: NavService[] }) {
+/**
+ * `services` is passed from the server layout so the full service content stays out of the client bundle.
+ * `showBlog` is true once at least one post is published (draft: false).
+ */
+export default function Navbar({ services, showBlog }: { services: NavService[]; showBlog: boolean }) {
+  const LINKS = ALL_LINKS.filter((link) => showBlog || link.href !== "/blog");
   const [open, setOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
